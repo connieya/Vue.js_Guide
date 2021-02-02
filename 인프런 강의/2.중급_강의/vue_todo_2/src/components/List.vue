@@ -1,21 +1,21 @@
 <template>
   <div>
-    <ul>
+    <transition-group name="list" tag="ul">
+    <!-- <ul> -->
       <li v-for="(todoItem ,index ) in propsdata" v-bind:key="todoItem.item" class="shadow">
 
         <i class="checkBtn fas fa-check"  v-bind:class ="{checkBtnCompleted : todoItem.completed}" 
         v-on:click="toggleComplete(todoItem , index)"></i>
 
         <span v-bind:class="{textCompleted: todoItem.completed}" >{{todoItem.item}}</span>
-
+          <!-- v-bind:class 이해하기 위에 todoItem.completed 가 true이면 textCompleted 클래스를 적용하겠다.  -->
       <span class="removeBtn" v-on:click="removeTodo(todoItem ,index)">
         <i class="fas fa-trash-alt"></i>
+
       </span>
-
-
       </li>
-    </ul>
-          <!-- v-bind:class 이해하기 위에 todoItem.completed 가 true이면 textCompleted 클래스를 적용하겠다.  -->
+ <!-- </ul> -->
+  </transition-group>
   </div>
 </template>
 
@@ -81,6 +81,20 @@ li{
   text-decoration: line-through;
   color: #b3adad;
 
+}
+
+/* 리스트 아이템 트랜지션 효과  */
+
+.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 </style>

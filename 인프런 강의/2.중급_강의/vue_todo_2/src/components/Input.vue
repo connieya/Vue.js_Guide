@@ -6,14 +6,28 @@
       <i class="fas fa-plus addBtn"></i>
 
     </span>
+      <Modal v-if="showModal" @close="showModal = false">
+          <!--
+        you can use custom content here to overwrite
+        default content
+      -->
+          <h3 slot="header">경고!!
+              
+              <!-- v-on:click = @click  -->
+            <i @click="showModal =false" class="fas fa-times closeBtn"></i>
+          </h3>
+
+          <p slot="body">값을 입력하세요 ㅎㅎ</p>
+     </Modal>
   </div>
 </template>
-
 <script>
+import Modal from './common/Modal'
 export default {
   data : function(){
     return {
-      newTodoItem: ""
+      newTodoItem: "",
+      showModal: false
     }
   },
   methods:{
@@ -23,9 +37,19 @@ export default {
         this.$emit('addTodoItem',this.newTodoItem);   
 
         this.newTodoItem= ""; // 입력하고 빈칸으로 만들기 
+      }else {
+        // alert("입력 하세요") 
+        this.showModal = true;
       }
 
+    },
+    modalClose : function(){
+
     }
+  },components:{
+
+    'Modal' : Modal
+
   }
 }
 </script>
@@ -61,6 +85,10 @@ input:focus{
 .addBtn{
   color:white;
   vertical-align: middle;
+}
+.closeBtn{
+  color: #42b983;
+
 }
 
 </style>
