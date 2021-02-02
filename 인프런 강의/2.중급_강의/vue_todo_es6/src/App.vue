@@ -21,17 +21,17 @@ export default {
        todoItems : []
     }
   },
-  // 비교하기 위해 created는 es5 로 놔둠 
-  created : function(){
-  //  console.log("created")
-    if(localStorage.length>0){
-      for(let i=0; i<localStorage.length; i++){
-        if(localStorage.key(i) !=='loglevel:webpack-dev-server' )
-        // this.todoItems.push(localStorage.key(i));
-       this.todoItems.push( JSON.parse(localStorage.getItem(localStorage.key(i))));
-      }
-    }
-  },
+  // 비교하기 위해 created는 es5 로 놔둠  , store.js로  이동
+  // created : function(){
+  // //  console.log("created")
+  //   if(localStorage.length>0){
+  //     for(let i=0; i<localStorage.length; i++){
+  //       if(localStorage.key(i) !=='loglevel:webpack-dev-server' )
+  //       // this.todoItems.push(localStorage.key(i));
+  //      this.todoItems.push( JSON.parse(localStorage.getItem(localStorage.key(i))));
+  //     }
+  //   }      
+  // },
   methods:{
     // methods 안에 속성 메서드 addOneItem를 es6 문법으로 축약하였다 
     addOneItem (todoItem){

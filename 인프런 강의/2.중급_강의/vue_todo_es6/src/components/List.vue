@@ -2,7 +2,7 @@
   <div>
     <transition-group name="list" tag="ul">
     <!-- <ul> -->
-      <li v-for="(todoItem ,index ) in propsdata" v-bind:key="todoItem.item" class="shadow">
+      <li v-for="(todoItem ,index ) in this.$store.state.todoItems" v-bind:key="todoItem.item" class="shadow">
 
         <i class="checkBtn fas fa-check"  v-bind:class ="{checkBtnCompleted : todoItem.completed}" 
         v-on:click="toggleComplete(todoItem , index)"></i>
@@ -21,7 +21,8 @@
 
 <script>
 export default {
-  props: ['propsdata'],
+  //   props는 store로 대체함
+  // props: ['propsdata'],
 
   methods:{
 
