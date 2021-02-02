@@ -31,7 +31,7 @@ export default {
     }
   },
   methods:{
-    addTodo : function(){
+    addTodo(){
       if(this.newTodoItem !== '') {
         // this.$emit('이벤트이름',인자1, 인자2, ..)
         this.$emit('addTodoItem',this.newTodoItem);   
@@ -43,12 +43,13 @@ export default {
       }
 
     },
-    modalClose : function(){
+    modalClose(){
 
     }
   },components:{
 
-    'Modal' : Modal
+    // 향상된 객체 리터럴 
+     Modal
 
   }
 }

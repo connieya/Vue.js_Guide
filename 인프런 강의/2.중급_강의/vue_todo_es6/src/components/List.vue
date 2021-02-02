@@ -24,12 +24,15 @@ export default {
   props: ['propsdata'],
 
   methods:{
-    removeTodo: function(todoItem , index){
+
+    // es6 문법 
+    removeTodo(todoItem , index){
         console.log("list에서 데이터" , todoItem, index)
 
         this.$emit('removeItem' ,todoItem,index);
         
     },
+    // es5 문법
     toggleComplete : function(todoItem ,index){
       this.$emit('toggleItem', todoItem, index)
       

@@ -16,11 +16,12 @@
  import TodoList from './components/List'
  import TodoFooter from './components/Footer'
 export default {
-  data: function(){
+  data(){
     return {
        todoItems : []
     }
   },
+  // 비교하기 위해 created는 es5 로 놔둠 
   created : function(){
   //  console.log("created")
     if(localStorage.length>0){
@@ -32,18 +33,19 @@ export default {
     }
   },
   methods:{
-    addOneItem: function(todoItem){
+    // methods 안에 속성 메서드 addOneItem를 es6 문법으로 축약하였다 
+    addOneItem (todoItem){
           const obj = {completed : false, item : todoItem}
          localStorage.setItem(todoItem, JSON.stringify(obj));
          this.todoItems.push(obj);
 
     },
-    removeOneItem: function(todoItem, index){
+    removeOneItem(todoItem, index){
         console.log("APP 에서 데이터" ,todoItem, index);
         localStorage.removeItem(todoItem.item);
          this.todoItems.splice(index,1); // 배열 api , 해당 index 중 1개를 지운다.
     },
-    toggleCompleted: function(todoItem, index){
+    toggleCompleted(todoItem, index){
         // todoItem.completed  = !todoItem.completed;  아래와 동일한 코드이다. 컴포넌트간 경계를 명확하게 하기 위헤서
         // 위의 코드는 이벤트로 받아온 값을 바로 또 적용하니깐? 
         this.todoItems[index].completed = !this.todoItems[index].completed;
@@ -57,10 +59,12 @@ export default {
   
   components: {
 
-      'TodoHeader' : TodoHeader,
-      'TodoInput' : TodoInput,
-      'TodoList' : TodoList,
+        // 향상된 객체 리터럴로 인해 축약할 수 있다. (속성명과 객채명이 같을 시  )
+      TodoHeader,
+      TodoInput,
+      TodoList,
       'TodoFooter' : TodoFooter
+      // 비교를 위해 축약 Footer만 축약하지  않았다. 
 
    }
  
