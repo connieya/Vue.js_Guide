@@ -1,17 +1,20 @@
 <template>
-    <div id="app">
-        <nav-bar></nav-bar>
-      <router-view></router-view>
-    </div>
+  <div id="app">
+      <div id="nav">
+      <ul>
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/chartjs">vueChartsJS</router-link></li>
+      <li><router-link to="/charts">vueCharts</router-link></li>
+      <li><router-link to="/chartkick">ChartKick</router-link></li>
+
+  </ul>
+  </div>
+  </div>
 </template>
 
 <script>
-import NavBar from './components/NavBar.vue'
 export default {
-  components:{
-    NavBar : NavBar
-  }
-  
+
 }
 </script>
 
