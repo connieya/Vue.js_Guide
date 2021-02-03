@@ -1,6 +1,7 @@
 import Vue from  'vue' 
 import Vuex from 'vuex'
-
+import * as  getters from './getter'
+import * as  mutations from './mutations'
 Vue.use(Vuex);
 
 const storage = {
@@ -26,31 +27,39 @@ export const store = new Vuex.Store({
        todoItems : storage.fetch()
 
     },
-    mutations: {
-        // input에서 입력한 값을 localStorage에 저장 
-         addOneItem (state,todoItem ){
+    getters : getters, //{
+
+
+        // storedTodoItems(state){
+        //     return state.todoItems;
+        // }   store/getter.js 에 모듈화 시킴
+     //},
+    mutations: mutations //{
+            //store/mutation.js에 모듈화 시킴
+
+    //      addOneItem (state,todoItem ){
            
-          const obj = {completed : false, item : todoItem}
-         localStorage.setItem(todoItem, JSON.stringify(obj));
-         state.todoItems.push(obj);  
+    //       const obj = {completed : false, item : todoItem}
+    //      localStorage.setItem(todoItem, JSON.stringify(obj));
+    //      state.todoItems.push(obj);  
 
          
 
-        },
-        removeOneItem(state,payload){
-            localStorage.removeItem(payload.todoItem.item);
-         state.todoItems.splice(payload.index,1); // 배열 api , 해당 index 중 1개를 지운다.
-        },
-        toggleCompleted(state, payload){
+    //     },
+    //     removeOneItem(state,payload){
+    //         localStorage.removeItem(payload.todoItem.item);
+    //      state.todoItems.splice(payload.index,1); 
+    //     },
+    //     toggleCompleted(state, payload){
          
-            state.todoItems[payload.index].completed = !state.todoItems[payload.index].completed;
-            localStorage.setItem(payload.todoItem.item, JSON.stringify(payload.todoItem));
-        },
-        clearItems(state){
-        localStorage.clear();
-        state.todoItems = [];
-    }
+    //         state.todoItems[payload.index].completed = !state.todoItems[payload.index].completed;
+    //         localStorage.setItem(payload.todoItem.item, JSON.stringify(payload.todoItem));
+    //     },
+    //     clearItems(state){
+    //     localStorage.clear();
+    //     state.todoItems = [];
+    // }
 
-    }
+ //   }
 
 });

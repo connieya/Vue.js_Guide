@@ -5,14 +5,23 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
   methods:{
-    clearTodo : function(){
-        //this.$emit('allClear')
-        this.$store.commit('clearItems')
+
+    ...mapMutations({
+      clearTodo : 'clearItems'
+
+    })
+        // 위와 아래는 같다. 위는 helper를 사용 한것, 밑은 사용하지 않아서
+        //  $store와 commit을 사용하여 store.js에 접근한 것임
+
+    // clearTodo : function(){
+    //     //this.$emit('allClear')
+    //     this.$store.commit('clearItems')
      
     
-    }
+    // }
   }
 }
 </script>
