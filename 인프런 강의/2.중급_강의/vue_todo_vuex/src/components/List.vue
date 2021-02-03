@@ -38,7 +38,7 @@ export default {
     },
     // es5 문법
     toggleComplete : function(todoItem ,index){
-        this.$store.commit('toggleCompleted' ,todoItem,index)
+        this.$store.commit('toggleCompleted' ,{todoItem,index})
       //this.$emit('toggleItem', todoItem, index)
       
 

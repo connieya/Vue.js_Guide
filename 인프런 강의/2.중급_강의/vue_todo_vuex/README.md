@@ -1,24 +1,13 @@
 # vue_todo_vuex
 
-## Project setup
+## 새 프로젝트 git 없이
+
 ```
-npm install
+vue create -n 이름
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 설치
 
-### Compiles and minifies for production
 ```
-npm run build
+npm i vuex --save
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

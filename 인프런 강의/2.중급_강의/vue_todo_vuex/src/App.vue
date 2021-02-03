@@ -2,9 +2,8 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput ></TodoInput>
-    <TodoList v-bind:propsdata="todoItems"  v-on:toggleItem="toggleCompleted"></TodoList>
-                  <!--  속성이름 ,현재 컴포넌트의 데이터 -->
-    <TodoFooter v-on:allClear="clearItems"></TodoFooter>
+    <TodoList></TodoList>               
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
@@ -14,18 +13,6 @@
  import TodoList from './components/List'
  import TodoFooter from './components/Footer'
 export default {
-  data(){
-    return {
-       todoItems : []
-    }
-  },
-  methods:{
-    // methods 안에 속성 메서드 addOneItem를 es6 문법으로 축약하였다 
-   
-    
-    
-    
-  },
   
   components: {
 

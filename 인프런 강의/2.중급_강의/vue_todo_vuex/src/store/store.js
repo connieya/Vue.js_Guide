@@ -41,14 +41,14 @@ export const store = new Vuex.Store({
             localStorage.removeItem(payload.todoItem.item);
          state.todoItems.splice(payload.index,1); // 배열 api , 해당 index 중 1개를 지운다.
         },
-        toggleCompleted(state, todoItem, index){
+        toggleCompleted(state, payload){
          
-            this.todoItems[index].completed = !this.todoItems[index].completed;
-            localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+            state.todoItems[payload.index].completed = !state.todoItems[payload.index].completed;
+            localStorage.setItem(payload.todoItem.item, JSON.stringify(payload.todoItem));
         },
-        clearItems(){
+        clearItems(state){
         localStorage.clear();
-        this.todoItems = [];
+        state.todoItems = [];
     }
 
     }
