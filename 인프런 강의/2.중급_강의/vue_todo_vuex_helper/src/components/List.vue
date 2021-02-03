@@ -3,14 +3,14 @@
     <transition-group name="list" tag="ul">
      
     <!-- <ul> -->
-      <li v-for="(todoItem ,index ) in this.$store.state.todoItems" v-bind:key="todoItem.item" class="shadow">
+      <li v-for="(todoItem ,index ) in this.todoItems" v-bind:key="todoItem.item" class="shadow">
 
         <i class="checkBtn fas fa-check"  v-bind:class ="{checkBtnCompleted : todoItem.completed}" 
-        v-on:click="toggleComplete(todoItem , index)"></i>
+        v-on:click="toggleComplete({todoItem , index})"></i>
 
         <span v-bind:class="{textCompleted: todoItem.completed}" >{{todoItem.item}}</span>
           <!-- v-bind:class 이해하기 위에 todoItem.completed 가 true이면 textCompleted 클래스를 적용하겠다.  -->
-      <span class="removeBtn" v-on:click="removeTodo(todoItem ,index)">
+      <span class="removeBtn" v-on:click="removeTodo({todoItem ,index})">
         <i class="fas fa-trash-alt"></i>
 
       </span>
@@ -21,32 +21,34 @@
 </template>
 
 <script>
+import {mapGetters , mapMutations} from 'vuex'
+
 export default {
  
 
   methods:{
 
-    // es6 문법 
-    removeTodo(todoItem , index){
-        // const obj = {
-        //   todoItem,
-        //   index
-        // }
-        this.$store.commit('removeOneItem',{todoItem, index});
-       // this.$emit('removeItem' ,todoItem,index);
-        
-    },
-    // es5 문법
-    toggleComplete : function(todoItem ,index){
-        this.$store.commit('toggleCompleted' ,{todoItem,index})
-      //this.$emit('toggleItem', todoItem, index)
-      
-
-    }
+    ...mapMutations({
+      removeTodo : 'removeOneItem',
+      toggleComplete : 'toggleCompleted'
+     
+    }),
+    // mapMutation 의 장점 removeOneItem 의 인자로 todoItem , index를 넘기지 않아도 알아서 해줌
   },
-  
+    computed:{
+    // todoItems(){
+    //   return this.$store.getters.storedTodoItems;
+    // }
+    // ...mapGetters(['storedTodoItems'])  -> 위에 in this.storedTodoItems
+    ...mapGetters({
+      todoItems :'storedTodoItems'
+      })
+  }
+
+
 
 }
+
 </script>
 
 <style>

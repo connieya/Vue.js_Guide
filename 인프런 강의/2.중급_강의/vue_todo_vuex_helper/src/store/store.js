@@ -26,6 +26,12 @@ export const store = new Vuex.Store({
        todoItems : storage.fetch()
 
     },
+    getters:{
+        storedTodoItems(state){
+            return state.todoItems
+        }
+
+    },
     mutations: {
         // input에서 입력한 값을 localStorage에 저장 
          addOneItem (state,todoItem ){
@@ -37,9 +43,10 @@ export const store = new Vuex.Store({
          
 
         },
+        
         removeOneItem(state,payload){
             localStorage.removeItem(payload.todoItem.item);
-         state.todoItems.splice(payload.index,1); // 배열 api , 해당 index 중 1개를 지운다.
+            state.todoItems.splice(payload.index,1); // 배열 api , 해당 index 중 1개를 지운다.
         },
         toggleCompleted(state, payload){
          
