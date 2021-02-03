@@ -2,7 +2,7 @@ import Vue from  'vue'
 import Vuex from 'vuex'
 import * as  getters from './getter'
 import * as  mutations from './mutations'
-Vue.use(Vuex);
+Vue.usem(Vuex);
 
 const storage = {
     
