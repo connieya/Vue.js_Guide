@@ -34,7 +34,9 @@ export default {
     addTodo(){
       if(this.newTodoItem !== '') {
         // this.$emit('이벤트이름',인자1, 인자2, ..)
-        this.$emit('addTodoItem',this.newTodoItem);   
+       // this.$emit('addTodoItem',this.newTodoItem);  
+      
+       this.$store.commit('addOneItem' ,this.newTodoItem) ; 
 
         this.newTodoItem= ""; // 입력하고 빈칸으로 만들기 
       }else {

@@ -28,14 +28,18 @@ export default {
 
     // es6 문법 
     removeTodo(todoItem , index){
-        console.log("list에서 데이터" , todoItem, index)
-
-        this.$emit('removeItem' ,todoItem,index);
+        // const obj = {
+        //   todoItem,
+        //   index
+        // }
+        this.$store.commit('removeOneItem',{todoItem, index});
+       // this.$emit('removeItem' ,todoItem,index);
         
     },
     // es5 문법
     toggleComplete : function(todoItem ,index){
-      this.$emit('toggleItem', todoItem, index)
+        this.$store.commit('toggleCompleted' ,todoItem,index)
+      //this.$emit('toggleItem', todoItem, index)
       
 
     }

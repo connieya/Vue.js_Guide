@@ -1,10 +1,8 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodoItem="addOneItem"></TodoInput>
-        <!-- 하위 컴포넌트에서 발생한 이벤트 이름 , 현재 컴포넌트 메소드 명 -->
-
-    <TodoList v-bind:propsdata="todoItems" v-on:removeItem="removeOneItem" v-on:toggleItem="toggleCompleted"></TodoList>
+    <TodoInput ></TodoInput>
+    <TodoList v-bind:propsdata="todoItems"  v-on:toggleItem="toggleCompleted"></TodoList>
                   <!--  속성이름 ,현재 컴포넌트의 데이터 -->
     <TodoFooter v-on:allClear="clearItems"></TodoFooter>
   </div>
@@ -24,20 +22,9 @@ export default {
   methods:{
     // methods 안에 속성 메서드 addOneItem를 es6 문법으로 축약하였다 
    
-    removeOneItem(todoItem, index){
-        console.log("APP 에서 데이터" ,todoItem, index);
-        localStorage.removeItem(todoItem.item);
-         this.todoItems.splice(index,1); // 배열 api , 해당 index 중 1개를 지운다.
-    },
-    toggleCompleted(todoItem, index){
-         
-        this.todoItems[index].completed = !this.todoItems[index].completed;
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    },
-    clearItems: function(){
-        localStorage.clear();
-        this.todoItems = [];
-    }
+    
+    
+    
   },
   
   components: {
