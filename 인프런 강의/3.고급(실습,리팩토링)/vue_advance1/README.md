@@ -1,24 +1,22 @@
 # vue_advance1
 
-## Project setup
-```
-npm install
-```
+## CLI 2.x vs CLI 3.x
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- 명령어
 
-### Compiles and minifies for production
-```
-npm run build
-```
+  - 2.x : vue init '프로젝트 템플릿 이름' '파일 위치'
+  - 3.x : vue create '프로젝트 이름'
 
-### Lints and fixes files
-```
-npm run lint
-```
+- 웹팩 설정 파일
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+  - 2.x : 노출 0 (webpack.config.js)
+  - 3.x : 노출 x
+
+- 프로젝트 구성
+
+  - 2.x : 깃헙의 템플릿 다운로드
+  - 3.x : 플러그인 기반으로 기능 추가
+
+- ES6 이해도
+  - 2.x : 필요 x
+  - 3.x : 필요 o
