@@ -26,14 +26,11 @@ export default {
 </script>
 
 <style>
-body , html{
-    font-size: 35px;
-    height: 100%;
-}
+
 .container{
     display: flex;
-    margin: 30px auto;
-    font-size: 0.8rem;
+    margin: 25px auto;
+    font-size: 0.7rem;
     width: 60%;
     text-align: center;
     background-color: #f5f2e4f1;

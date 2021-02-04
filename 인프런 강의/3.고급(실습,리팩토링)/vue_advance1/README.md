@@ -20,3 +20,11 @@
 - ES6 이해도
   - 2.x : 필요 x
   - 3.x : 필요 o
+
+## 자바스크립트 this 4가지와 화살표 함수의 this
+
+강의 복습하기
+
+## Vuex 사용
+
+![image](https://user-images.githubusercontent.com/66653324/106878378-3d97c080-671d-11eb-9177-cbbffe9554df.png)

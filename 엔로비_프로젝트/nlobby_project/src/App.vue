@@ -17,5 +17,10 @@ export default {
 </script>
 
 <style>
+body , html{
+    font-size: 35px;
+    height: 100%;
+    margin: 0 auto;
+}
 
 </style>

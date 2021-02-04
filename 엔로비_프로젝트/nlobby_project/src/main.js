@@ -4,6 +4,8 @@ import {router} from './router/index'
 
 import ChartKick from 'vue-chartkick'
 import Chart from 'chart.js'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.use(ChartKick.use(Chart))
 
