@@ -22,7 +22,7 @@
         <h3>Reactivity - Live update upon change in datasets</h3>
         <!--Reactivity Line Chart example-->
         <reactive :chart-data ="datacollection"></reactive>
-        <button class="btn btn-primary" @click="fillData()">Random</button>
+        <button class="button is-primary" @click="fillData()">Random</button>
       </div>
     </div>
   </section>
@@ -49,8 +49,6 @@ import Reactive from '../components/Reactive.vue'
     },
     created(){
       this.fillData()
-        
-
       
     },
     methods:{

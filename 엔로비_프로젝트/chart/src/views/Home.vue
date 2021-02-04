@@ -1,28 +1,61 @@
-<template>
-   <section class="hero">
-    <div class="hero-body">
-      <div class="container">
-        <h1>Creating Beautiful Charts Using Vue.js Wrappers For Chart.js</h1>
-        <h2>
-          Read the article on SitePoint:
-          <a href="https://www.sitepoint.com/creating-beautiful-charts-vue-chart-js/">
-            Creating Beautiful Charts Using Vue.js Wrappers for Chart.js
-          </a>
-        </h2>
-        <h3>
-          Download the repo from GitHub:
-          <a href="https://github.com/sitepoint-editors/vue-charts">
-            https://github.com/sitepoint-editors/vue-charts
-          </a>
-        </h3>
-      </div>
-    </div>
-  </section>
-</template>
-
 <script>
+import {Bar} from 'vue-chartjs'
 export default {
-    name : 'home'
+    extends: Bar,
+    data () {
+      return {
+        // 크게 datacollection , options 두개의 객체 
+        datacollection: {
+          //Data to be represented on x-axis
+        //   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          labels: ['2월1일','2월2일','2월3일','2월4일'],
+          datasets: [
+            {
+              label: '목표치',
+             // backgroundColor: '#f87979',
+              backgroundColor: 'green',
+              pointBackgroundColor: 'red',
+              borderWidth: 3,
+              pointBorderColor: '#249EBF',
+              //Data to be represented on y-axis
+              //data: [40, 20, 30, 50, 90, 10, 20, 40, 50, 70, 90, 100]
+              data: [40, 20, 30, 50, 90, 10, 20, 40, 50, 70, 90, 100]
+            }
+          ]
+          
+        },
+        //Chart.js options that controls the appearance of the chart
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              },
+              gridLines: {
+                display: true
+              }
+            }],
+            xAxes: [ {
+              gridLines: {
+                display: false
+              }
+            }]
+          },
+          legend: {
+            display: true
+          },
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      }
+    },
+
+
+    mounted () {
+      //renderChart function renders the chart with the datacollection and options object.
+      this.renderChart(this.datacollection, this.options)
+    }
+
 }
 </script>
 

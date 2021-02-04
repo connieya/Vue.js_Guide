@@ -1,7 +1,7 @@
 
 
 <script>
-import Line from 'vue-chartjs'
+import {Line} from 'vue-chartjs'
 export default {
  extends: Line,
     data () {
@@ -17,7 +17,7 @@ export default {
               borderWidth: 1,
               pointBorderColor: '#249EBF',
               //Data to be represented on y-axis
-              data: [40, 20, 30, 50, 90, 10, 20, 40, 50, 70, 90, 100]
+              data: [90, 20, 30, 50, 90, 10, 20, 40, 50, 70, 90, 100]
             }
           ]
         },

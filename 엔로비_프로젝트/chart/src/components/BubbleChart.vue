@@ -1,6 +1,8 @@
-
+ 
 <script>
-import Bubble from 'vue-chartjs'
+// sinlge-file 컴포넌트 에서는 오직 script block만 필요하다
+
+import {Bubble} from 'vue-chartjs'
 export default {
  extends: Bubble,
     data () {
@@ -74,7 +76,7 @@ export default {
           responsive: true,
           maintainAspectRatio: false
         }
-      }
+      }  //data
     },
     mounted () {
       //renderChart function renders the chart with the datacollection and options object.

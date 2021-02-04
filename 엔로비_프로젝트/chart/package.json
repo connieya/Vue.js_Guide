@@ -9,9 +9,12 @@
   },
   "dependencies": {
     "chart.js": "^2.9.4",
+    "chartkick": "^3.2.1",
     "core-js": "^3.6.5",
+    "hchs-vue-charts": "^1.2.8",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.1",
+    "vue-chartkick": "^0.6.1",
     "vue-router": "^3.5.1"
   },
   "devDependencies": {
