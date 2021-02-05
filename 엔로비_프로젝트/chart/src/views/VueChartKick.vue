@@ -10,12 +10,13 @@
       <div class="column">
         <h3>Bar Chart</h3>
         <!--Bar Chart example-->
+        목표치
         <bar-chart :data="barData"></bar-chart>
       </div>
     </div>
     <div class="columns">
       <div class="column">
-        <h3>Scatter Chart</h3>
+       <bar-chart :data="chartData2"></bar-chart>
         <!--Scatter chart example-->
       </div>
       <div class="column">
@@ -31,13 +32,14 @@ export default {
     data () {
       return {
         chartData: [
-            {name:'목표치',data:[['Jan', 44], ['Feb', 27], ['Mar', 60], ['Apr', 55], ['May', 37], ['Jun', 40], ['Jul', 69], ['Aug', 33], ['Sept', 76], ['Oct', 90], ['Nov', 34], ['Dec', 22]]},
-            {name:'실적치',data:[['Jan', 12], ['Feb', 500], ['Mar', 43], ['Apr', 31], ['May', 65], ['Jun', 40], ['Jul', 69], ['Aug', 33], ['Sept', 76], ['Oct', 90], ['Nov', 34], ['Dec', 22]]}
+            {name:'목표치',data:[['Jan', 30], ['Feb', 27], ['Mar', 60], ['Apr', 55], ['May', 37], ['Jun', 40], ['Jul', 69], ['Aug', 33], ['Sept', 76], ['Oct', 90], ['Nov', 34], ['Dec', 22]]},
+            {name:'실적치',data:[['Jan', 50], ['Feb', 30], ['Mar', 43], ['Apr', 31], ['May', 65], ['Jun', 40], ['Jul', 69], ['Aug', 33], ['Sept', 76], ['Oct', 90], ['Nov', 34], ['Dec', 22]]}
           ],
         
         
-        chartData2: [['Jan', 90], ['Feb', 12], ['Mar', 23], ['Apr', 31], ['May', 37], ['Jun', 40], ['Jul', 69], ['Aug', 33], ['Sept', 76], ['Oct', 90], ['Nov', 34], ['Dec', 22]],
-       barData: [ ['Word' ,100] ,['Play', 1492]  ]
+        chartData2: [['2월1일',60],['2월2일',70]],
+       barData: [ ['2월1일' ,100] ,['2월2일', 1492]  ]
+
         
       }
     }

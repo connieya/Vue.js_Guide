@@ -1,3 +1,4 @@
+
 <script>
 import {Bar} from 'vue-chartjs'
 export default {
@@ -10,14 +11,24 @@ export default {
           labels: ['2월1일','2월2일','2월3일','2월4일'],
           datasets: [
             {
-              label: 'Data One',
+              label: '목표치',
              // backgroundColor: '#f87979',
-              backgroundColor: 'green',
+              backgroundColor: 'red',
               pointBackgroundColor: 'white',
               borderWidth: 3,
               pointBorderColor: '#249EBF',
               //Data to be represented on y-axis
-              data: [40, 20, 30, 50, 90, 10, 20, 40, 50, 70, 90, 100]
+              data: [40, 20, 80 ]
+            },
+                  {
+              label: '실적치',
+             // backgroundColor: '#f87979',
+              backgroundColor: 'blue',
+              pointBackgroundColor: 'white',
+              borderWidth: 3,
+              pointBorderColor: '#249EBF',
+              //Data to be represented on y-axis
+              data: [20, 100, 200 ]
             }
           ]
         },

@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home'
+import BarProps from '../views/BarProps'
 import VueChartJS from '../views/VueChartJS'
 import VueChartKick from '../views/VueChartKick'
 import VueCharts from '../views/VueCharts'
+import BarChartJS from '../views/Bar-VueChartJS'
 
 Vue.use(Router)
 
@@ -12,24 +13,31 @@ export const router = new Router({
     routes: [
         {
             path: '/',
-            name : 'Home',
-            component : Home
+            name : 'BarProps',
+            component : BarProps
 
         },
+
         {
             path: '/chartjs',
             name : 'VueChartJS',
             component : VueChartJS
         },
+
         {
-        path: '/chartkick',
-        name: 'VueChartKick',
-        component: VueChartKick
+            path: '/chartkick',
+            name: 'VueChartKick',
+            component: VueChartKick
+        },
+
+        {
+            path: '/charts',
+            name: 'VueCharts',
+            component: VueCharts
         },
         {
-        path: '/charts',
-        name: 'VueCharts',
-        component: VueCharts
+            path: '/barJS',
+            component : BarChartJS
         }
     ]
 })

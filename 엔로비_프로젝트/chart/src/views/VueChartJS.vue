@@ -9,6 +9,17 @@
        <div class="column">
         <h3>Bar Chart</h3>
         <!--Bar Chart example-->
+           <form v-on:submit.prevent="submitForm">
+            <div>
+              <label for="username"> id: </label>
+              <input type="text" id="username" v-model="username">
+            </div>
+            <div>
+              <label for="password">pw:</label>
+              <input type="text" id="password" v-model="password">
+            </div>
+            <button type="submit">login</button>
+          </form>
         <bar-chart></bar-chart>
       </div>
   </div>

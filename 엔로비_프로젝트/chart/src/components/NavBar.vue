@@ -2,10 +2,11 @@
   <div id="app">
       <div id="nav">
       <ul>
-      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/">BarProps</router-link></li>
       <li><router-link to="/chartjs">vueChartsJS</router-link></li>
       <li><router-link to="/charts">vueCharts</router-link></li>
       <li><router-link to="/chartkick">ChartKick</router-link></li>
+      <li><router-link to="/barJS">Bar-vueChartJS</router-link></li>
 
   </ul>
   </div>
