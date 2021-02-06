@@ -1,6 +1,16 @@
 <template>
   <div>
-      <div v-for="user in this.$store.state.news">{{user.title}}</div>
+    <p v-for="item in this.$store.state.news">
+
+         <a v-bind:href="item.url"  target="_blank" >{{item.title}}</a> 
+        <small> 
+            {{item.time_ago}} 
+        </small>
+            by 
+            <!-- <router-link v-bind:to="'/user/'+item.user"> {{item.user}}</router-link> -->
+            <router-link v-bind:to="`/user/${item.user}`"> {{item.user}}</router-link>
+
+     </p>
   </div>
 </template>
 
@@ -19,16 +29,6 @@ export default {
   created(){
     this.$store.dispatch('FETCH_NEWS');
 
-  //   var vm = this;
-
-  //   // 1
-  //  fetchNewsList()
-  //   .then( function(response){
-  //       vm.users = response.data;
-  //   })
-  //   .catch(function(error){
-  //       console.log(error);
-  //   })
 
    }
 

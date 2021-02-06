@@ -1,6 +1,12 @@
 <template>
   <div>
-      <div v-for="job in this.$store.state.jobs">{{job.title}}</div>
+      <div >
+           <p v-for="job in this.$store.state.jobs">
+               <!-- v-bind:href 축약 문법 -->
+         <a :href="job.url" target="_blank" rel="noopener noreferrer">{{job.title}}</a>  , 
+            {{job.time_ago}} <small>from </small> {{job.domain}}
+         </p>
+      </div>
   </div>
 </template>
 

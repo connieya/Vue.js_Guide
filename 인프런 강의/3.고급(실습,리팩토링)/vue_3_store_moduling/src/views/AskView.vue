@@ -1,6 +1,12 @@
 <template>
 <div>
-  <div v-for="item in askItems" >{{item.title}}</div>
+   <div >
+           <p v-for="item in askItems">
+               <!-- v-bind:href 축약 문법 -->
+         <a :href="item.url" target="_blank" rel="noopener noreferrer">{{item.title}}</a>  , 
+            {{item.time_ago}} <small>by </small>  <router-link to="/user">{{item.user}} </router-link>
+         </p>
+      </div>
 </div>
 </template>
 

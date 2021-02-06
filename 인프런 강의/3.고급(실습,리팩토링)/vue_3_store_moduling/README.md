@@ -1,24 +1,7 @@
 # vue_3_store_moduling
 
-## Project setup
-```
-npm install
-```
+### store 모듈화
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### 동적 라우팅
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Dynamic Route Matching

@@ -7,6 +7,7 @@ import ItemView from '../views/ItemView'
 import UserView from '../views/UserView'
 
 
+
 Vue.use(VueRouter)
 export const router = new VueRouter({
     mode:'history',
@@ -39,8 +40,9 @@ export const router = new VueRouter({
         component : ItemView
     },
     {
-        path: '/user',
+        path: '/user/:id',
         component : UserView
-    }
+    },
+    
 ]
 })
