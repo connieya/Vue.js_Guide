@@ -1,27 +1,34 @@
 <template>
 <div>
-  <div v-for="ask in asks" >{{ask.title}}</div>
+  <div v-for="item in askItems" >{{item.title}}</div>
 </div>
 </template>
 
 <script>
-import {fetchAskList} from '../api/index'
+import {mapGetters, mapState} from 'vuex';
 
 export default {
-  data(){
-    return {
-      asks: []
-    }
+
+//  AskView는 맵 헬퍼를 사용하였다.
+  computed:{
+    ...mapGetters({
+      askItems : 'fetchedAsk'
+    })
+
+    //#2
+    // ...mapState({
+    //   fetchedAsk: state => state.ask
+
+    // })
+    //#1
+    // ask(){
+    //   return this.$store.state.ask;
+    // }
   },
+  
     created(){
-      var vm = this;
-      fetchAskList()
-      .then(function(response){
-          vm.asks = response.data;
-      })
-      .then(function(error){
-          console.log(error);
-      })
+      this.$store.dispatch('FETCH_ASK');
+    
     }
 }
 </script>
