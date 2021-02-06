@@ -3,8 +3,8 @@
    <div >
            <p v-for="item in askItems">
                <!-- v-bind:href 축약 문법 -->
-         <a :href="item.url" target="_blank" rel="noopener noreferrer">{{item.title}}</a>  , 
-            {{item.time_ago}} <small>by </small>  <router-link to="/user">{{item.user}} </router-link>
+       <router-link v-bind:to="`/${item.url}`">{{item.title}}</router-link>  , 
+            {{item.time_ago}} <small>by </small>  {{item.user}} 
          </p>
       </div>
 </div>

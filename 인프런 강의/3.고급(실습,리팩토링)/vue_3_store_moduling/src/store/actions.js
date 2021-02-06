@@ -1,5 +1,6 @@
 import {
     fetchAskList, 
+    fetchItem, 
     fetchJobsList, 
     fetchNewsList, 
     fetchUserList} 
@@ -45,6 +46,13 @@ export default {
             fetchUserList(name)
             .then(({data}) =>{
                 commit('SET_USER',data)
+            })
+        },
+        FETCH_ITEM({commit} ,itemId){
+            fetchItem(itemId)
+            .then(response =>{
+                console.log('response 확인',response)
+                commit('SET_ITEM' , response.data)
             })
         }
         

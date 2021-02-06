@@ -20,10 +20,14 @@ function fetchUserList(username){
     console.log("확인", username)
     return axios.get(`${config.baseUrl}user/${username}.json`)
 }
+function fetchItem(itemId){
+    return axios.get(`${config.baseUrl}item/${itemId}.json`)
+}
 
 export{
     fetchNewsList,
     fetchAskList,
     fetchJobsList,
-    fetchUserList
+    fetchUserList,
+    fetchItem
 }
