@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            font-size: 1.9rem;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+    <div id="root">
+
+            <p v-if="liked">{{message}}</p>
+            
+        <h1><button v-on:click="likeButton" id="clickBtn" onclick="likeButton()">click</button></h1>
+            <!-- input , type: button 이랑 button 태그랑은 차이가 있다잉 ~~~  -->
+    </div>
+<script>
+    var clickBtn = document.querySelector('#clickBtn');
+    var liked = false;
+    function likeButton(){
+         console.log('this.liked 값은 :', this.liked)
+         this.liked =  !this.liked;
+        if(this.liked === true){
+            console.log('this.liked 값은11 :', this.liked);
+            clickBtn.value = 'liked';
+        }
+    }
+        new Vue({
+            el: "#root",
+            data:{
+                liked :false,
+                message: "좋아요 버튼 눌러졌음",
+                buttonName : "liked"
+            },
+            methods:{
+                likeButton(){
+                    console.log('버튼 눌러짐');
+                    console.log(this.liked);
+                    this.liked = !this.liked;
+                }
+            }
+        })
+</script>
+</body>
+</html>
