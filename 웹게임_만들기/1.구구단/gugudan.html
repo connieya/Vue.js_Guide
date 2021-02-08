@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 제로초 강의 보기전  -->
+    <div id="app">
+        <div>{{first}} 곱하기 {{second}} 은?</div>
+        <form action="">
+            <input type="number" v-model="value" v-on:keyup>
+            <button v-on:click="gugudan">입력</button>
+            <h2>{{result}}</h2>
+
+      </div>
+    
+    <script>
+        new Vue({
+            el: "#app",
+            data:{
+                first : Math.ceil(Math.random()*9),
+                second : Math.ceil(Math.random()*9),
+                result :"",
+                value : ""
+                
+            },
+            methods:{
+                gugudan(){
+                    console.log("ddd");
+                    console.log(typeof this.first);
+                    console.log(typeof this.value);
+                  if(this.first * this.second === Number(this.value) ){
+                        this.reuslt = "정답"
+                  }else{
+                        this.result = "땡"
+                  }
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

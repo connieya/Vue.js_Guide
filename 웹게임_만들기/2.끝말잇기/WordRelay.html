@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>끝말잇기 시작~~</div>
+        <h2>{{word}} :</h2>
+        <form v-on:submit="onSubmitForm">
+            
+            <input type="text" v-model="value">
+            <button type="submit">입력</button>
+        </form>
+            <div>{{result}}</div>
+    </div>
+
+
+    <script>
+        new Vue({
+            el : "#app",
+            data : {
+                word : '엔로비',
+                value : '',
+                result : ""
+            },
+            methods:{
+                onSubmitForm(e){
+                    e.preventDefault()
+                    console.log(this.word.length);
+                    console.log(this.word[this.word.length-1]);
+                    if(this.word[this.word.length - 1] === this.value[0]){
+                        this.word = this.value;
+                        this.result = "딩동댕"
+                        this.value = ""
+                    }else{
+                        this.result ="땡!!!!";
+                        this.value = "";
+                    }
+
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -18,8 +18,9 @@
     <div id="root">
 
             <p v-if="liked">{{message}}</p>
+            <h1><button  v-on:click="likeButton" id="clickBtn" onclick="likeButton()">click</button></h1>
+            <!-- <h1><button v-else-if="liked" v-on:click="likeButton" id="clickBtn" onclick="likeButton()">liked</button></h1> -->
             
-        <h1><button v-on:click="likeButton" id="clickBtn" onclick="likeButton()">click</button></h1>
             <!-- input , type: button 이랑 button 태그랑은 차이가 있다잉 ~~~  -->
     </div>
 <script>
