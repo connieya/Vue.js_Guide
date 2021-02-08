@@ -4,14 +4,19 @@
       <p>karma:  {{userInfo.karma}}</p>
       <p>created : {{this.$store.state.user.created}}</p>
 
-
+    <user-profile></user-profile>
      
   </div>
 </template>
 
 <script>
+import UserProfile from "../components/UserProfile.vue";
+
+
 //import axios from 'axios';
-export default {
+export default 
+  {
+      components: { UserProfile },
     computed:{
         userInfo(){
             return this.$store.state.user;

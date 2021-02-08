@@ -1,9 +1,5 @@
 <template>
   <div>
-    <section>
-     
-        <!-- <router-link v-bind:to="`/user/${iteminfo.user}`">
-          </router-link> -->
          
           <div class="userId"> id: {{itemInfo.id}}</div> 
           <div class="userDetail">
@@ -12,23 +8,12 @@
                 <p> <i class="fas fa-star"></i>  {{itemInfo.points}}</p>
                 <p> <i class="fas fa-history"></i> {{itemInfo.time_ago}}</p>
            </div>
-      <div class="title">
-      <h1>{{itemInfo.title}}</h1>
-     
-
-            </div>
-
-     
-    </section>
-    <div class="contentBox">
-      <p v-html="itemInfo.content">   </p>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
-  computed:{
+computed:{
     itemInfo(){
       return this.$store.state.items
     }
@@ -39,11 +24,10 @@ export default {
     console.log(this.$route.query.id)
     this.$store.dispatch('FETCH_ITEM' , itemId);
   }
-
 }
 </script>
 
-<style> 
+<style scoped>
 .userId{
   display: flex;
   align-items: center;
