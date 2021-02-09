@@ -33,19 +33,6 @@
 
 <script>
 export default {
-        created(){
-            // this.$store.dispatch('FETCH_NEWS');
-            const path = this.$route.path;
-            if(path ==='/news'){
-                this.$store.dispatch('FETCH_NEWS');
-            }else if(path === '/ask'){
-                this.$store.dispatch('FETCH_ASK');
-            }else if(path ==='/jobs'){
-                 this.$store.dispatch('FETCH_JOBS');
-            }
-
-
-        },
         computed:{
             listItems(){
                 const path = this.$route.path;
