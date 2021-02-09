@@ -6,3 +6,7 @@
 <br/>
 
 src / views/ CreateListView.js 파일 생성
+
+`CreateListView.js` , `ListView.vue` HOC 가 있기 때문에 <br/>
+
+NewsView, AskView , JobsView 컴포넌트를 모두 삭제 하였다.
