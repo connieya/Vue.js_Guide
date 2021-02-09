@@ -1,33 +1,39 @@
 <template>
-  <div>
-         
-          <div class="userId"> id: {{itemInfo.id}}</div> 
+  <div class="userContainer">
+         <h2>UserPropfile.vue</h2>
+          <div class="userId"> No: {{userInfo.created_time}}</div> 
           <div class="userDetail">
-          <router-link :to="`/user/${itemInfo.user}`"> <h2>  <i class="far fa-user"></i>  {{itemInfo.user}}</h2> </router-link>
+         
+          <h2>  <i class="far fa-user"></i>  {{userInfo.id}}</h2> 
+        
 
-                <p> <i class="fas fa-star"></i>  {{itemInfo.points}}</p>
-                <p> <i class="fas fa-history"></i> {{itemInfo.time_ago}}</p>
+                <p> <i class="far fa-thumbs-up"></i> {{userInfo.karma}}</p>
+                <p> <i class="fas fa-sign-in-alt"></i> {{userInfo.created}}</p>
            </div>
   </div>
 </template>
 
 <script>
 export default {
-computed:{
-    itemInfo(){
-      return this.$store.state.items
-    }
+  computed:{
+        userInfo(){
+            return this.$store.state.user;
+        }
+    },
     
-  },
-  created(){
-    const itemId = this.$route.query.id;
-    console.log(this.$route.query.id)
-    this.$store.dispatch('FETCH_ITEM' , itemId);
-  }
+
+
 }
 </script>
 
 <style scoped>
+.userContainer{
+  border: 2px solid #646322;
+  width: 80%;
+  margin: 3rem auto;
+  text-align: center;
+  height: 60%;
+}
 .userId{
   display: flex;
   align-items: center;
@@ -47,13 +53,13 @@ computed:{
   justify-content: space-around;
   
 }
-.fa-star{
+.fa-thumbs-up{
   color: #c9df4d;
-  font-size: 1.6rem;
+  font-size: 2.7rem;
 }
-.fa-history{
+.fa-sign-in-alt{
   color: #af1da88c;
-  font-size: 1.9rem;
+  font-size: 2.9rem;
 }
 .title{
   background-color: #f0e6e3;

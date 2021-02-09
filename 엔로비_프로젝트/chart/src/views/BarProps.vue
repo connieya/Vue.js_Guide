@@ -12,7 +12,9 @@
             </div>
             <button type="submit" v-on:click="addData">login</button>
           <!-- </form> -->
-    <bar-props :chartdata="performanceData"></bar-props>
+
+        <div>{{target}} </div>  
+    <bar-props :chartValue="performanceData"></bar-props>
   </div>
 </template>
 <script>
@@ -25,7 +27,7 @@ export default {
       return {
         target : "",
         performanceData:{
-           labels: ['2월1일','2월2일','2월3일','2월4일','2월5일','2월6일',this.addData(),this.addData()],
+           labels: ['2월01일','2월02일','2월3일','2월4일','2월5일','2월6일',this.addData(),this.addData()],
              datasets: [
             {
               label: '실적치',
@@ -34,7 +36,7 @@ export default {
               pointBackgroundColor: 'red',
               borderWidth: 3,
               pointBorderColor: '#249EBF',
-              data: [this.getData(), 232, 111, 50, 90, 200, 20, 40, 50, 70, 90, 100]
+              data: [this.getData(), this.getData(), 111, 50, 90, 200, 20, 40, 50, 70, 90, 100]
             }
           ]
 
@@ -46,18 +48,26 @@ export default {
     methods:{
       addData(){
         console.log(this.target);
-        return "2월7일"
+        console.log(this.performanceData);
+        return "2월7일";
       },
      
       getData(){
         console.log("tqttq");
-        return 150;
+        console.log(this.target);
+        return this.target;
+      }
+    },
+    computed:{
+      getTarget(){
+        return this.performanceData;
       }
     }
    
     
 }
-       
+       console.log("dddd");
+      //  console.log(this.performanceData);
 </script>
 
 <style>

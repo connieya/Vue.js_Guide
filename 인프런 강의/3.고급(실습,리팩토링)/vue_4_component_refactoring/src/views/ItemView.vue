@@ -51,7 +51,7 @@ export default {
   margin-left: 0.5rem;
   padding: 6px;
   color: #6f7177;
-  font-weight: 600;
+  font-weight: 00;
 }
 .fa-user {
   font-size: 2.7rem;
