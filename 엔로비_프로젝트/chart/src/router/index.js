@@ -5,6 +5,7 @@ import VueChartJS from '../views/VueChartJS'
 import VueChartKick from '../views/VueChartKick'
 import VueCharts from '../views/VueCharts'
 import BarChartJS from '../views/Bar-VueChartJS'
+import RandomChart from '../views/RandomChart'
 
 Vue.use(Router)
 
@@ -38,6 +39,10 @@ export const router = new Router({
         {
             path: '/barJS',
             component : BarChartJS
+        },
+        {
+            path: '/random',
+            component : RandomChart
         }
     ]
 })

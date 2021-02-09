@@ -1,16 +1,15 @@
 <template>
   <div id="app">
       <div id="nav">
-      <ul>
-        <li><router-link to="/random">LineRandom</router-link></li> 
-      <li><router-link to="/">BarProps</router-link></li>
-      <li><router-link to="/chartjs">vueChartsJS</router-link></li>
-      <li><router-link to="/charts">vueCharts</router-link></li>
-      <li><router-link to="/chartkick">ChartKick</router-link></li>
-      <li><router-link to="/barJS">Bar-vueChartJS</router-link></li>
-
-  </ul>
-  </div>
+          <ul>
+              <li>
+                  <router-link to="/main">Main</router-link>
+              </li>
+              <li>
+                  <router-link to="/bar">BarChart</router-link>
+              </li>
+          </ul>
+      </div>
   </div>
 </template>
 
@@ -55,12 +54,4 @@ export default {
   margin: 0 10px;
 }
 
-h1 {
-  font-size: 1.75em;
-}
-
-h2 {
-  line-height: 2.5em;
-  font-size: 1.25em;
-}
 </style>

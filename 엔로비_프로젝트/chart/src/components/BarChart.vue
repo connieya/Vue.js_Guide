@@ -13,7 +13,7 @@ export default {
             {
               label: '목표치',
              // backgroundColor: '#f87979',
-              backgroundColor: 'red',
+              backgroundColor: 'pink',
               pointBackgroundColor: 'white',
               borderWidth: 3,
               pointBorderColor: '#249EBF',

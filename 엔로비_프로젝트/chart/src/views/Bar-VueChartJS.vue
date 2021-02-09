@@ -4,18 +4,19 @@
 
         <h3>Bar Chart</h3>
         <!--Bar Chart example-->
-           <form v-on:submit.prevent="submitForm">
+           <!-- <form v-on:submit.prevent="submitForm"> -->
             <div>
               <label for="username"> id: </label>
-              <input type="text" id="username" v-model="date">
+              <input type="text" id="username" v-model="targetValue">
             </div>
             <div>
               <label for="password">pw:</label>
               <input type="text" id="password" v-model="password">
             </div>
-            <button type="submit">login</button>
-          </form>
-        <bar-chart-2 :chartdata="datacollection"></bar-chart-2>
+            <!-- <button type="submit">등록</button> -->
+            <button v-on:click="addData">등록</button>
+          <!-- </form> -->
+        <bar-chart-2 :propsdata="datacollection"></bar-chart-2>
   
   
   </section>
@@ -27,13 +28,14 @@ import BarChart2 from '../components/Bar-VueChartJS';
 
     components:{
        BarChart2
-
+      
     },
     data(){
       return{
         datacollection : null,
-        labels: [],
-        date : ""
+        targetValue : [],
+        newArray : []
+
         
       }
     },
@@ -42,31 +44,41 @@ import BarChart2 from '../components/Bar-VueChartJS';
       
     },
     methods:{
-      fillData(){
-        this.datacollection = {
-      labels: ['2월1일', '2월2일', '2월3일' ,'2월4일' ,'2월5일','2월6일'],
-      datasets: [
-        {
-          label: '목표치',
-          backgroundColor: 'pink',
-          data: [this.getData(), this.getRandomInt(), this.getData2(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
-        }
-      ]
-    } // datacolletion
-      }, // fillData()
-    getRandomInt () {
-    // JS function to generate numbers to be used for the chart
-    return Math.floor(Math.random() * (50 - 5 + 1)) + 5
-  },
-  getData(){
-    return 120;
-  },
-  getData2(){
-   // this.datacollection.push("2월6일")
-  }
-    }
+      addData(){
+        console.log(this.targetValue);
+          this.newArray.push(this.targetValue);
+          this.targetValue= "";
+      },
+        fillData(){
+          this.datacollection = {
+        labels: ['2월1일', '2월2일', '2월3일' ,'2월4일' ,'2월5일','2월6일'],
+        datasets: [
+          {
+            label: '목표치',
+            backgroundColor: 'pink',
+            data: [this.getData(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
+           // data : this.newArray
+          }
+        ]
+      } // datacolletion
+        }, // fillData()
+      getRandomInt () {
+      // JS function to generate numbers to be used for the chart
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 20
+      },
+      getData(){
+        return 40;
+      },
+   
 
-  }
+  },
+  // mounted() {
+  //   setInterval(this.fillData, 2000);
+  // }
+
+
+
+ }
   </script>
 
 <style>

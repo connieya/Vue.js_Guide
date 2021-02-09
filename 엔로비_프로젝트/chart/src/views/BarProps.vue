@@ -10,11 +10,12 @@
               <label for="password">pw:</label>
               <input type="text" id="password">
             </div>
-            <button type="submit" v-on:click="addData">login</button>
+            <button type="submit" v-on:click="getData">login</button>
           <!-- </form> -->
 
         <div>{{target}} </div>  
-    <bar-props :chartValue="performanceData"></bar-props>
+    <!-- <bar-props :chartValue="performanceData"></bar-props> -->
+      <bar-props :chartData="NumValue" :chartLabels="DateValue" ></bar-props>
   </div>
 </template>
 <script>
@@ -25,22 +26,24 @@ export default {
     },
     data () {
       return {
-        target : "",
-        performanceData:{
-           labels: ['2월01일','2월02일','2월3일','2월4일','2월5일','2월6일',this.addData(),this.addData()],
-             datasets: [
-            {
-              label: '실적치',
-             // backgroundColor: '#f87979',
-              backgroundColor: 'yellow',
-              pointBackgroundColor: 'red',
-              borderWidth: 3,
-              pointBorderColor: '#249EBF',
-              data: [this.getData(), this.getData(), 111, 50, 90, 200, 20, 40, 50, 70, 90, 100]
-            }
-          ]
+       NumValue : [],
+       DateValue : []
+        // performanceData:{
+        //    labels: ['2월01일','2월02일','2월3일','2월4일','2월5일','2월6일',this.addData(),this.addData()],
+        //      datasets: [
+        //     {
+        //       label: '실적치',
+        //      // backgroundColor: '#f87979',
+        //       backgroundColor: 'yellow',
+        //       pointBackgroundColor: 'red',
+        //       borderWidth: 3,
+        //       pointBorderColor: '#249EBF',
+        //       data: [this.getData(), this.getData(), 111, 50, 90, 200, 20, 40, 50, 70, 90, 100]
+        //       //data: Values
+        //     }
+        //   ]
 
-        }
+        // }
         
         
         }
@@ -53,21 +56,14 @@ export default {
       },
      
       getData(){
-        console.log("tqttq");
         console.log(this.target);
-        return this.target;
+        this.NumValue.push(this.target);
       }
     },
-    computed:{
-      getTarget(){
-        return this.performanceData;
-      }
-    }
+   
    
     
 }
-       console.log("dddd");
-      //  console.log(this.performanceData);
 </script>
 
 <style>
