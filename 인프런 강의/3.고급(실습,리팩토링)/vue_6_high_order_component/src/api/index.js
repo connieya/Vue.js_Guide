@@ -23,8 +23,10 @@ function fetchUserList(username){
 function fetchItem(itemId){
     return axios.get(`${config.baseUrl}item/${itemId}.json`)
 }
-
-
+// HOC , news, ask, jobs를 모두 포함하는 함수
+function fetchList(pageName){
+    return axios.get(`${config.baseUrl}${pageName}/1.json`)
+}
 
 export{
     fetchNewsList,
@@ -32,5 +34,5 @@ export{
     fetchJobsList,
     fetchUserList,
     fetchItem,
-   
+    fetchList
 }

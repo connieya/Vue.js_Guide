@@ -2,6 +2,7 @@ import {
     fetchAskList, 
     fetchItem, 
     fetchJobsList, 
+    fetchList, 
     fetchNewsList, 
     fetchUserList} 
     from '../api/index';
@@ -12,6 +13,7 @@ export default {
             .then(response =>{
                 context.commit('SET_NEWS' , response.data);
                 return response;
+               // state.news = response.data;
             })
             .catch(error =>{
                 console.log(error);
@@ -19,6 +21,8 @@ export default {
         },
         FETCH_ASK(context){
             console.log("context 속성 알아보기", context)
+            // commit , dispatch, getters, 
+            //rootGetters, rootState, state
             fetchAskList()
             .then(response =>{
                 context.commit('SET_ASK',response.data)
@@ -52,6 +56,10 @@ export default {
                 commit('SET_ITEM' , response.data)
             })
         },
-        
+        FETCH_LIST({commit} , pageName){
+            fetchList(pageName)
+            .then(({data}) => commit('SET_LIST',data))
+            .catch(error => console.log(error));
+        }
         
     }
