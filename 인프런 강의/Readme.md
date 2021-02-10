@@ -91,3 +91,10 @@ return 값이 없을 때는 dispatch 로 FETCH_LIST를 호출해서 데이터 �
 Spinner 가 발생하지 않는다. <br/>
 
 그 뒤로 return 값을 fetchList 앞에 입력하자 Spinner 기능이 작동하였다.
+
+## 컴포넌트 디자인 패턴
+
+- Common - 기본적인 컴포넌트 등록과 컴포넌트 통신
+- Slot - 마크업 확장이 가능한 컴포넌트
+- Controlled - 결합력이 높은 컴포넌트
+- Renderless - 데이터 처리 컴포넌트
