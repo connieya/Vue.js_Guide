@@ -98,3 +98,12 @@ Spinner 가 발생하지 않는다. <br/>
 - Slot - 마크업 확장이 가능한 컴포넌트
 - Controlled - 결합력이 높은 컴포넌트
 - Renderless - 데이터 처리 컴포넌트
+
+# 서비스 배포를 위한 명령어
+
+npm run build
+
+## Netlify를 이용한 배포
+
+회원가입 후
+github 연동, repository 선택
