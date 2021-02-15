@@ -11,7 +11,8 @@ export const router = new Router({
     routes : [
         {
             path: '/',
-            component : Home
+            // component : Home
+            component :()=> import('@/views/Home')
         },
         {
             path: '/lineChart',
