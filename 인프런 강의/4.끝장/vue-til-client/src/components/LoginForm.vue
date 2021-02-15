@@ -20,6 +20,7 @@
 <script>
 import { loginUser } from '@/api/index';
 import { validateEmail } from '@/utils/validation';
+import { saveUserToCookie, saveAuthToCookie } from '@/utils/cookies';
 export default {
 	data() {
 		return {
@@ -51,8 +52,13 @@ export default {
 					// 나는 jwt 값을 지정하지 않았기 때문에 token 값이 없음
 
 					this.$store.commit('setUsername', response.data.username);
+					this.$store.commit('setToken', response.data.userno);
 					// this.$store.commit('setToken',response.data.token); //토큰값이 없음 ㅠㅠ
 					//this.logMessage = `${response.data.username} 님 환영합니다.`;
+					saveUserToCookie(response.data.username);
+					saveAuthToCookie(response.data.userno);
+					console.log('333', response.data.userno);
+					console.log('444', response.data.username);
 					this.$router.push('/main');
 					// this.initForm();
 				}

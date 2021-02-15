@@ -25,7 +25,6 @@ const instance = createInstance();
 // 회원가입 API
 function registerUser(userData) {
 	//axios.post(url, userData);
-
 	return instance.post('/register', userData);
 }
 
