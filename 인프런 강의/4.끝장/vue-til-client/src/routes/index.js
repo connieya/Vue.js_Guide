@@ -10,7 +10,7 @@ export default new VueRouter({
 	routes: [
 		{
 			path: '/',
-			redirect: '/main',
+			redirect: '/intro',
 		},
 		{
 			path: '/login',
@@ -33,6 +33,14 @@ export default new VueRouter({
 		{
 			path: '/main',
 			component: () => import('@/views/MainPage'),
+		},
+		{
+			path: '/intro',
+			component: () => import('@/views/Intro'),
+		},
+		{
+			path: '/chart',
+			component: () => import('@/views/ChartPage'),
 		},
 	],
 });

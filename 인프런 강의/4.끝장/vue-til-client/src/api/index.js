@@ -16,7 +16,7 @@ function createInstance() {
 		// },
 	});
 	return setInterceptors(instance);
-	//xios.post('http://localhost:8000/register') // 원래 오리지널
+	//axios.post('http://localhost:8000/register') // 원래 오리지널
 	//instance.interceptors.request.use();
 }
 
@@ -33,7 +33,6 @@ function loginUser(userData) {
 	return instance.post('/login', userData);
 }
 
-// 학습 노트 데이터를 조회하는 API
 function fetchPosts() {
 	return instance.get('/posts');
 }

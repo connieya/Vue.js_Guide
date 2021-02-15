@@ -6,21 +6,20 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-		username: getUserFromCookie() || '',
-		// token: '', // 난 토큰이 없지만 일 단 그냥 따라 하기
+		userId: getUserFromCookie() || '',
 		token: getAuthFromCookie() || '',
 	},
 	getters: {
 		isLogin(state) {
-			return state.username !== '';
+			return state.userId !== '';
 		},
 	},
 	mutations: {
-		setUsername(state, username) {
-			state.username = username;
+		setUserId(state, userId) {
+			state.userId = userId;
 		},
-		clearUsername(state) {
-			state.username = '';
+		clearUserId(state) {
+			state.userId = '';
 		},
 		setToken(state, token) {
 			state.token = token;

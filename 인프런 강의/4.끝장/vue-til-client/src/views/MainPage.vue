@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<a href="javascript:;" @click="logoutUser">로그아웃</a>
 		<div class="main">
 			<h1>Today I learned</h1>
 			<!-- <div v-if="isLoading">
@@ -35,6 +36,10 @@ export default {
 			const response = await fetchPosts();
 			this.isLoading = false;
 			this.postItem = response.data;
+		},
+		logoutUser() {
+			this.$store.commit('clearUserId');
+			this.$router.push('/intro');
 		},
 	},
 	// 라이프 사이클 훅

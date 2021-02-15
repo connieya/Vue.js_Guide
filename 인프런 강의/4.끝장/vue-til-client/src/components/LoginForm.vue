@@ -1,47 +1,51 @@
 <template>
-	<div>
+	<div class="loginContainer">
 		<form @submit.prevent="submitForm">
+			<h1>로그인</h1>
 			<div>
-				<label for="username">id:</label>
-				<input type="text" id="username" v-model="username" />
+				<input
+					type="text"
+					id="userId"
+					v-model="userId"
+					placeholder="아이디를 입력하세요"
+				/>
 			</div>
 			<div>
-				<label for="password">pw:</label>
-				<input type="text" id="password" v-model="password" />
+				<input
+					type="text"
+					id="userPw"
+					v-model="userPw"
+					placeholder="비밀번호를 입력하세요"
+				/>
 			</div>
-			<button v-bind:disabled="!isUsernameValid || !password" type="submit">
+			<button
+				v-bind:disabled="!userId || !userPw"
+				type="submit"
+				class="btn btn-danger"
+			>
 				로그인
 			</button>
-			<p>{{ logMessage }}</p>
 		</form>
 	</div>
 </template>
 
 <script>
 import { loginUser } from '@/api/index';
-import { validateEmail } from '@/utils/validation';
 import { saveUserToCookie, saveAuthToCookie } from '@/utils/cookies';
 export default {
 	data() {
 		return {
-			username: '',
-			password: '',
-			//log message
-			logMessage: '',
+			userId: '',
+			userPw: '',
 		};
 	},
-	computed: {
-		isUsernameValid() {
-			return validateEmail(this.username);
-		},
-	},
+
 	methods: {
 		async submitForm() {
 			try {
-				//비즈니스 로직
 				const userData = {
-					username: this.username,
-					password: this.password,
+					userId: this.userId,
+					userPw: this.userPw,
 				};
 				// const { data } = await loginUser(userData);
 				const response = await loginUser(userData);
@@ -51,29 +55,34 @@ export default {
 					console.log('222', response);
 					// 나는 jwt 값을 지정하지 않았기 때문에 token 값이 없음
 
-					this.$store.commit('setUsername', response.data.username);
-					this.$store.commit('setToken', response.data.userno);
-					// this.$store.commit('setToken',response.data.token); //토큰값이 없음 ㅠㅠ
-					//this.logMessage = `${response.data.username} 님 환영합니다.`;
-					saveUserToCookie(response.data.username);
-					saveAuthToCookie(response.data.userno);
-					console.log('333', response.data.userno);
-					console.log('444', response.data.username);
+					this.$store.commit('setUserId', response.data.userId);
+					this.$store.commit('setToken', response.data.userNo);
+					saveUserToCookie(response.data.userId);
+					saveAuthToCookie(response.data.userNo);
 					this.$router.push('/main');
-					// this.initForm();
 				}
 			} catch (error) {
-				// 에러 핸들링할 코드
 				console.log(error);
-				// this.initForm();
 			}
-		},
-		initForm() {
-			this.username = '';
-			this.password = '';
 		},
 	},
 };
 </script>
 
-<style></style>
+<style scoped>
+.loginContainer {
+	border: 1px solid #000000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	height: 35vw;
+	text-align: center;
+	margin: 20px auto;
+}
+input {
+	margin: 12px 0;
+	width: 100%;
+	font-size: 1.2rem;
+}
+</style>
