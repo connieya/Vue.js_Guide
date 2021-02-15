@@ -10,7 +10,7 @@ export default new VueRouter({
 	routes: [
 		{
 			path: '/',
-			redirect: '/login',
+			redirect: '/main',
 		},
 		{
 			path: '/login',
@@ -29,6 +29,10 @@ export default new VueRouter({
 			component: () => import('@/views/NotFoundPage'),
 			// not Found라는 메세지가 있는 페이지로 이동
 			// 등록되지 않는 라우터에 대한 대처 콜백? 롤백? 라우터
+		},
+		{
+			path: '/main',
+			component: () => import('@/views/MainPage'),
 		},
 	],
 });
