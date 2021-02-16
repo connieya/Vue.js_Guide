@@ -1,59 +1,35 @@
 <template>
 	<div>
-		<a href="javascript:;" @click="logoutUser">로그아웃</a>
-		<div class="main">
-			<h1>Today I learned</h1>
-			<router-link to="/add">
-				<i class="fas fa-plus-square"></i>
-			</router-link>
-			<!-- <div v-if="isLoading">
-				Loading...
-			</div> -->
-			<LoadingSpinner v-if="isLoading"></LoadingSpinner>
-			<ul v-else>
-				<post-list-item
-					v-for="post in postItem"
-					:item="post"
-					v-bind:key="post.pno"
-				></post-list-item>
-			</ul>
-		</div>
+		<my-switch
+			:propsdata="switchValue"
+			@switchValueChanged="switchButton"
+		></my-switch>
+		<template v-if="switchValue">
+			<LineChartPage></LineChartPage>
+		</template>
+		<template v-else>
+			<BarChartPage></BarChartPage>
+		</template>
 	</div>
 </template>
 
 <script>
-import { fetchPosts } from '@/api/index';
-import PostListItem from '../components/posts/PostListItem.vue';
-import LoadingSpinner from '@/components/common/LoadingSpinner';
+import MySwitch from '../components/common/MySwitch.vue';
+import BarChartPage from '@/views/BarChartPage';
+import LineChartPage from '@/views/LineChartPage';
 export default {
-	components: { PostListItem, LoadingSpinner },
+	components: { MySwitch, LineChartPage, BarChartPage },
 	data() {
 		return {
-			postItem: [],
-			isLoading: false,
+			switchValue: true,
 		};
 	},
 	methods: {
-		async fetchData() {
-			this.isLoading = true;
-			const response = await fetchPosts();
-			this.isLoading = false;
-			this.postItem = response.data;
+		switchButton() {
+			this.switchValue = !this.switchValue;
 		},
-		logoutUser() {
-			this.$store.commit('clearUserId');
-			this.$router.push('/intro');
-		},
-	},
-	// 라이프 사이클 훅
-	created() {
-		this.fetchData();
 	},
 };
 </script>
 
-<style scoped>
-.fa-plus-square {
-	font-size: 2.12rem;
-}
-</style>
+<style></style>

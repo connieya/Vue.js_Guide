@@ -31,13 +31,14 @@ export default new VueRouter({
 			// 등록되지 않는 라우터에 대한 대처 콜백? 롤백? 라우터
 		},
 		{
-			path: '/main',
-			component: () => import('@/views/MainPage'),
+			path: '/post',
+			component: () => import('@/views/PostPage'),
 		},
 		{
 			path: '/intro',
 			component: () => import('@/views/Intro'),
 		},
+
 		{
 			path: '/bar',
 			component: () => import('@/views/BarChartPage'),
@@ -49,6 +50,10 @@ export default new VueRouter({
 		{
 			path: '/add',
 			component: () => import('@/views/PostAddPage'),
+		},
+		{
+			path: '/main',
+			component: () => import('@/views/MainPage'),
 		},
 	],
 });

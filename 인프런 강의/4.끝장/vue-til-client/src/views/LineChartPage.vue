@@ -8,6 +8,7 @@
 				>회원탈퇴</a
 			>
 		</div>
+
 		<line-chart
 			v-if="loaded"
 			:targetData="targetValue"

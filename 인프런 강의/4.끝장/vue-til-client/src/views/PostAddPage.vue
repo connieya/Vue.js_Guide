@@ -32,7 +32,7 @@ export default {
 				const response = await registerPost(postData);
 				if (response.data === 1) {
 					alert('글 등록 완료');
-					this.$router.push('/main');
+					this.$router.push('/post');
 				} else {
 					alert('글 등록 실패');
 					console.log(response);

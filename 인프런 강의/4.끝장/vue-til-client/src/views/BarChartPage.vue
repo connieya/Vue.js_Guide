@@ -8,7 +8,8 @@
 				>회원탈퇴</a
 			>
 		</div>
-
+		<!-- <router-link to="/bar">막대차트</router-link>
+		<router-link to="/line">선차트</router-link> -->
 		<bar-chart
 			v-if="loaded"
 			:targetData="targetValue"
@@ -20,9 +21,9 @@
 		<Modal v-if="showModal" @close="showModal = false">
 			<h3 slot="header">차트 등록하기</h3>
 		</Modal>
-		<ul>
+		<!-- <ul>
 			<li v-for="item in chartItem" :key="item.chartNo">{{ item.target }}</li>
-		</ul>
+		</ul> -->
 	</div>
 </template>
 
