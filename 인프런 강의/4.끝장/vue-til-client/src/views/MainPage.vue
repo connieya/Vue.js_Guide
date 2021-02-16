@@ -3,6 +3,9 @@
 		<a href="javascript:;" @click="logoutUser">로그아웃</a>
 		<div class="main">
 			<h1>Today I learned</h1>
+			<router-link to="/add">
+				<i class="fas fa-plus-square"></i>
+			</router-link>
 			<!-- <div v-if="isLoading">
 				Loading...
 			</div> -->
@@ -49,4 +52,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.fa-plus-square {
+	font-size: 2.12rem;
+}
+</style>

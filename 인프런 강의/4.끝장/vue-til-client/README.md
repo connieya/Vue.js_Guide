@@ -1,6 +1,3 @@
-# vue-til-client
-캡틴 판교님 깃 허브 소스 참고
-- [클라이언트](https://github.com/joshua1988/vue-til/tree/complete)
 
 ## 코드 스플리팅
 

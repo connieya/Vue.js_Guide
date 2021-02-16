@@ -1,7 +1,7 @@
 <script>
-import { Bar } from 'vue-chartjs';
+import { Line } from 'vue-chartjs';
 export default {
-	extends: Bar,
+	extends: Line,
 	data() {
 		return {
 			options: {
@@ -19,7 +19,7 @@ export default {
 					xAxes: [
 						{
 							gridLines: {
-								display: false,
+								display: true,
 							},
 						},
 					],
@@ -35,43 +35,38 @@ export default {
 	props: {
 		targetData: {
 			type: Array,
-			required: true,
+			default: null,
 		},
 		performanceData: {
 			type: Array,
-			required: true,
+			default: null,
 		},
-		chartLabels: {
+		labelsDate: {
 			type: Array,
-			required: true,
+			default: null,
 		},
 	},
 	mounted() {
 		this.renderChart(
 			{
-				labels: this.chartLabels,
+				labels: this.labelsDate,
 				datasets: [
 					{
 						label: '목표치',
 						colors: 'green',
 						backgroundColor: 'blue',
-						// data: this.chartData,
 						data: this.targetData,
 					},
 					{
 						label: '실적치',
 						colors: 'green',
 						backgroundColor: 'red',
-						// data: this.chartData,
 						data: this.performanceData,
 					},
 				],
 			},
 			this.options,
 		);
-	},
-	created() {
-		console.log('sss', this.targetData);
 	},
 };
 </script>

@@ -90,7 +90,7 @@ export default {
 			console.log(response);
 			if (response.data === 1) {
 				alert('차트가 등록 되었습니다.');
-				this.$router.push('/main');
+				this.$router.push('/bar');
 			} else {
 				alert('차트 등록 실패');
 			}

@@ -44,4 +44,15 @@ function fetchChart(chartData) {
 function fetchChartList() {
 	return instance.get('/chart');
 }
-export { registerUser, loginUser, fetchPosts, fetchChart, fetchChartList };
+
+function registerPost(postData) {
+	return instance.post('/posts', postData);
+}
+export {
+	registerUser,
+	loginUser,
+	fetchPosts,
+	fetchChart,
+	fetchChartList,
+	registerPost,
+};

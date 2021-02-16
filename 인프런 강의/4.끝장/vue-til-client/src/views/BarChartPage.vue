@@ -9,7 +9,12 @@
 			>
 		</div>
 
-		<bar-chart :chartData="chartItem"></bar-chart>
+		<bar-chart
+			v-if="loaded"
+			:targetData="targetValue"
+			:chartLabels="dateValue"
+			:performanceData="performanceValue"
+		></bar-chart>
 
 		<span @click="addData"><i class="fas fa-plus-circle"></i></span>
 		<Modal v-if="showModal" @close="showModal = false">
@@ -29,27 +34,36 @@ export default {
 	components: { BarChart, Modal },
 	data() {
 		return {
-			targetValue: [],
-			dateValue: [],
+			loaded: false,
 			showModal: false,
+			targetValue: [],
+			performanceValue: [],
 			chartItem: [],
+			dateValue: [],
 		};
 	},
 	methods: {
+		addData() {
+			this.showModal = true;
+		},
 		logoutUser() {
 			this.$store.commit('clearUserId');
 			this.$router.push('/intro');
 		},
-		addData() {
-			this.showModal = true;
-		},
 		async fetchData() {
-			const response = await fetchChartList();
-			this.chartItem = response.data;
-			console.log('차트데이터', response);
-			this.chartItem.forEach(item => {
-				console.log('item!!!!!!!!!!', item);
-			});
+			try {
+				const response = await fetchChartList();
+				this.chartItem = response.data;
+				this.chartItem.forEach(item => {
+					console.log('item!!!!!!!!!!', item);
+					this.targetValue.push(item.target); //  목표치
+					this.dateValue.push(item.chartDate);
+					this.performanceValue.push(item.performance); // 실적치
+					this.loaded = true;
+				});
+			} catch (error) {
+				console.log(error);
+			}
 		},
 	},
 	created() {

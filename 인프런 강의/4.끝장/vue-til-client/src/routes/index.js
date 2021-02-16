@@ -39,8 +39,16 @@ export default new VueRouter({
 			component: () => import('@/views/Intro'),
 		},
 		{
-			path: '/chart',
-			component: () => import('@/views/ChartPage'),
+			path: '/bar',
+			component: () => import('@/views/BarChartPage'),
+		},
+		{
+			path: '/line',
+			component: () => import('@/views/LineChartPage'),
+		},
+		{
+			path: '/add',
+			component: () => import('@/views/PostAddPage'),
 		},
 	],
 });
