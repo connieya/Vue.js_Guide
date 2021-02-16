@@ -36,4 +36,12 @@ function loginUser(userData) {
 function fetchPosts() {
 	return instance.get('/posts');
 }
-export { registerUser, loginUser, fetchPosts };
+
+function fetchChart(chartData) {
+	return instance.post('/chart', chartData);
+}
+
+function fetchChartList() {
+	return instance.get('/chart');
+}
+export { registerUser, loginUser, fetchPosts, fetchChart, fetchChartList };
