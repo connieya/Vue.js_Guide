@@ -15,7 +15,9 @@
 			:targetData="targetValue"
 			:chartLabels="dateValue"
 			:performanceData="performanceValue"
+			:style="myStyles"
 		></bar-chart>
+		<!-- <button @click="increase()">Increase height</button> -->
 
 		<span @click="addData"><i class="fas fa-plus-circle"></i></span>
 		<Modal v-if="showModal" @close="showModal = false">
@@ -44,6 +46,10 @@ export default {
 		};
 	},
 	methods: {
+		increase() {
+			this.height += 10;
+		},
+
 		addData() {
 			this.showModal = true;
 		},
@@ -69,6 +75,14 @@ export default {
 	},
 	created() {
 		this.fetchData();
+	},
+	computed: {
+		myStyles() {
+			return {
+				height: `${this.height}px`,
+				position: 'relative',
+			};
+		},
 	},
 };
 </script>

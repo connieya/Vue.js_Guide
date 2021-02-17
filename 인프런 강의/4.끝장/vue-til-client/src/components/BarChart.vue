@@ -55,14 +55,12 @@ export default {
 						label: '목표치',
 						colors: 'green',
 						backgroundColor: 'blue',
-						// data: this.chartData,
 						data: this.targetData,
 					},
 					{
 						label: '실적치',
 						colors: 'green',
 						backgroundColor: 'red',
-						// data: this.chartData,
 						data: this.performanceData,
 					},
 				],
@@ -71,7 +69,10 @@ export default {
 		);
 	},
 	created() {
-		console.log('sss', this.targetData);
+		// console.log('sss', this.targetData);
+		console.log('001', this.$refs);
+		console.log('002', this.$refs.__proto__);
 	},
+	methods: {},
 };
 </script>

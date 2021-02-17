@@ -48,6 +48,9 @@ function fetchChartList() {
 function registerPost(postData) {
 	return instance.post('/posts', postData);
 }
+function deletePostItem(pno) {
+	return instance.delete(`/delete/${pno}`);
+}
 export {
 	registerUser,
 	loginUser,
@@ -55,4 +58,5 @@ export {
 	fetchChart,
 	fetchChartList,
 	registerPost,
+	deletePostItem,
 };

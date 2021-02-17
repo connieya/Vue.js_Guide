@@ -59,7 +59,7 @@ export default {
 					this.$store.commit('setToken', response.data.userNo);
 					saveUserToCookie(response.data.userId);
 					saveAuthToCookie(response.data.userNo);
-					this.$router.push('/bar');
+					this.$router.push('/main');
 				}
 			} catch (error) {
 				console.log(error);

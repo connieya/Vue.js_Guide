@@ -19,7 +19,9 @@
 					v-for="post in postItem"
 					:item="post"
 					v-bind:key="post.pno"
+					@refresh="fetchData"
 				></post-list-item>
+				<!-- @refresh는 postItem에서 올려준 emit의 이름이다  -->
 			</ul>
 		</div>
 	</div>
@@ -64,5 +66,8 @@ export default {
 <style scoped>
 .fa-plus-square {
 	font-size: 2.12rem;
+}
+ul {
+	list-style: none;
 }
 </style>
