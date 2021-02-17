@@ -6,7 +6,7 @@
 		</div>
 		<div class="post-contents">{{ item.content }}</div>
 		<div class="post-item">
-			<i class="fas fa-edit"></i>
+			<i class="fas fa-edit" @click="editPost"></i>
 			<i class="far fa-trash-alt" @click="deletePost"></i>
 		</div>
 	</li>
@@ -23,10 +23,9 @@ export default {
 	},
 	methods: {
 		async deletePost() {
-			confirm('정말 삭제하시겠습니까?');
 			try {
 				const reponse = await deletePostItem(this.item.pno);
-				console.log('글 번호:', this.item.pnos);
+				console.log('글 번호:', this.item.pno);
 				console.log(reponse.data);
 				// 글을 삭제하고 나서 됐는지 UI에 확인 시켜줘야함
 				// 그래서 emit 이벤트로 PostPage로 데이터 올려줄거임
@@ -35,6 +34,11 @@ export default {
 			} catch (error) {
 				console.log(error);
 			}
+		},
+		editPost() {
+			// console.log('sdadad');
+			const pno = this.item.pno;
+			this.$router.push(`/post/${pno}`);
 		},
 	},
 };

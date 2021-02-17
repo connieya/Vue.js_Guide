@@ -1,12 +1,11 @@
 <template>
 	<div>
-		<a href="javascript:;" @click="logoutUser">로그아웃</a>
+		<!-- <a href="javascript:;" @click="logoutUser">로그아웃</a>
 		<my-switch
 			:propsdata="switchValue"
 			@switchValueChanged="switchButton"
-		></my-switch>
+		></my-switch> -->
 		<div class="main">
-			<h1>Today I learned</h1>
 			<router-link to="/add">
 				<i class="fas fa-plus-square"></i>
 			</router-link>
@@ -47,6 +46,7 @@ export default {
 			const response = await fetchPosts();
 			this.isLoading = false;
 			this.postItem = response.data;
+			console.log('로그값 확인!!!!!!!!!!!!!!');
 		},
 		logoutUser() {
 			this.$store.commit('clearUserId');
@@ -65,7 +65,9 @@ export default {
 
 <style scoped>
 .fa-plus-square {
-	font-size: 2.12rem;
+	font-size: 4.12rem;
+	display: flex;
+	justify-content: center;
 }
 ul {
 	list-style: none;

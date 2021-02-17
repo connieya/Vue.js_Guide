@@ -14,13 +14,6 @@
 							<form @submit.prevent="submitForm">
 								<div>
 									<input
-										type="text"
-										v-model="chartTitle"
-										placeholder="제목을 입력하세요"
-									/>
-								</div>
-								<div>
-									<input
 										type="number"
 										id="target"
 										v-model="target"
@@ -89,9 +82,11 @@ export default {
 			const response = await fetchChart(chartData);
 			console.log(response);
 			if (response.data === 1) {
-				alert('차트가 등록 되었습니다.');
+				// alert('차트가 등록 되었습니다.');
 				// this.$router.push('/bar');
-				this.$router.go();
+				// this.$router.go();
+				this.$emit('close');
+				this.$emit('refreshs');
 			} else {
 				alert('차트 등록 실패');
 			}

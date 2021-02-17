@@ -46,6 +46,6 @@ export default {
 	border-radius: 50%;
 }
 .body {
-	width: 100%;
+	width: 10%;
 }
 </style>

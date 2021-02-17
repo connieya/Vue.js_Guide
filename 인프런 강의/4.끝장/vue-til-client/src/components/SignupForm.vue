@@ -75,14 +75,14 @@ export default {
 			} else {
 				alert('회원가입 실패');
 			}
-			this.initForm();
+			// this.initForm();
 		},
 	},
-	initForm() {
-		this.userId = '';
-		this.userPw = '';
-		this.userEmail = '';
-	},
+	// initForm() {
+	// 	this.userId = '';
+	// 	this.userPw = '';
+	// 	this.userEmail = '';
+	// },
 };
 </script>
 

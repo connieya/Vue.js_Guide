@@ -35,6 +35,10 @@ export default new VueRouter({
 			component: () => import('@/views/PostPage'),
 		},
 		{
+			path: '/post/:id',
+			component: () => import('@/views/PostEditPage'),
+		},
+		{
 			path: '/intro',
 			component: () => import('@/views/Intro'),
 		},
@@ -54,6 +58,14 @@ export default new VueRouter({
 		{
 			path: '/main',
 			component: () => import('@/views/MainPage'),
+		},
+		{
+			path: '/main/bar',
+			component: () => import('@/views/BarChartPage'),
+		},
+		{
+			path: '/main/line',
+			component: () => import('@/views/LineChartPage'),
 		},
 	],
 });

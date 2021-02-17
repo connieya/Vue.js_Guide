@@ -32,24 +32,43 @@ function registerUser(userData) {
 function loginUser(userData) {
 	return instance.post('/login', userData);
 }
+// 회원탈퇴 APi
+function deleteUser(userNo) {
+	return instance.delete(`/userDelete/${userNo}`);
+}
 
+// post 리스트
 function fetchPosts() {
 	return instance.get('/posts');
 }
-
-function fetchChart(chartData) {
-	return instance.post('/chart', chartData);
+// post 특정 화면
+function fetchPost(pno) {
+	return instance.get(`/post/${pno}`);
 }
-
-function fetchChartList() {
-	return instance.get('/chart');
-}
-
+// post 등록 api
 function registerPost(postData) {
 	return instance.post('/posts', postData);
 }
+// post 삭제 api
 function deletePostItem(pno) {
 	return instance.delete(`/delete/${pno}`);
+}
+// post 수정 api
+function editPost(pno, postData) {
+	return instance.put(`/post/${pno}`, postData);
+}
+
+// chart 마지막 데이터 삭제 api
+function lastChartItemDelete(chartNo) {
+	return instance.delete(`/chartItemDelete/${chartNo}`);
+}
+// chart 동록 api
+function fetchChart(chartData) {
+	return instance.post('/chart', chartData);
+}
+// chart 리스트 api
+function fetchChartList() {
+	return instance.get('/chart');
 }
 export {
 	registerUser,
@@ -59,4 +78,8 @@ export {
 	fetchChartList,
 	registerPost,
 	deletePostItem,
+	lastChartItemDelete,
+	fetchPost,
+	editPost,
+	deleteUser,
 };

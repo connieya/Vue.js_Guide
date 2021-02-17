@@ -70,8 +70,8 @@ export default {
 	},
 	created() {
 		// console.log('sss', this.targetData);
-		console.log('001', this.$refs);
-		console.log('002', this.$refs.__proto__);
+		// console.log('001', this.$refs);
+		// console.log('002', this.$refs.__proto__);
 	},
 	methods: {},
 };

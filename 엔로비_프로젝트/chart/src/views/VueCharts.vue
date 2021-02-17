@@ -41,7 +41,7 @@ export default {
     data () {
       return {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        dataset: [0, 59, 127, 81, 56, 55, 40 ,80]
+        dataset: [95, 59, 127, 81, 56, 55, 40 ,80]
       }
     },methods:{
       addData(){
