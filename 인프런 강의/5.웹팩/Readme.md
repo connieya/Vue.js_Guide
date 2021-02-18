@@ -92,3 +92,21 @@ devDependencies는 개발 할 때 도움을 주는 개발용 보조 라이브러
 - devDependencies (개발용)
 
 [정리 글](https://joshua1988.github.io/webpack-guide/build/npm-module-install.html#%EA%B0%9C%EB%B0%9C%EC%9A%A9-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%99%80-%EB%B0%B0%ED%8F%AC%EC%9A%A9-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B5%AC%EB%B6%84%ED%95%98%EA%B8%B0)
+
+
+# webpack 사용 전 , 후 차이
+
+- webpack 사용 전
+![image](https://user-images.githubusercontent.com/66653324/108284960-847bc080-71c9-11eb-8923-a4e9643e6ef1.png)
+
+lodash 라이브러리를 불러오기 위해 
+`lodash.js`와  `index.js` 파일의 응답을 기다린다.
+<br/>
+수 많은 라이브러리를 불러온다고 가정하자! 많은 파일을 요청할 것이고
+로딩 시간이 길어질 것이다.
+
+- webpack 사용 후
+![image](https://user-images.githubusercontent.com/66653324/108284773-35359000-71c9-11eb-89a5-1566e229c0f2.png)
+
+`main.js` 자바스크립트 하나를 요청하여 lodash 라이브러리를 사용하기 때문에
+로딩 시간이 줄어든다.
