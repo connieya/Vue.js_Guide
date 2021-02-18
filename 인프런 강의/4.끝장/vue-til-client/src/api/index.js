@@ -62,6 +62,10 @@ function editPost(pno, postData) {
 function lastChartItemDelete(chartNo) {
 	return instance.delete(`/chartItemDelete/${chartNo}`);
 }
+// chart 일별 삭제하기 api
+function ChartItemDelete(chartNo) {
+	return instance.delete(`/chartDelete/${chartNo}`);
+}
 // chart 동록 api
 function fetchChart(chartData) {
 	return instance.post('/chart', chartData);
@@ -69,6 +73,14 @@ function fetchChart(chartData) {
 // chart 리스트 api
 function fetchChartList() {
 	return instance.get('/chart');
+}
+// chart 상세보기 api
+function fetchChartDetail(chartNo) {
+	return instance.get(`/chartDetail/${chartNo}`);
+}
+// chart 수정하기 api
+function fetchChartUpdate(chartNo, chartData) {
+	return instance.put(`/chartUpdate/${chartNo}`, chartData);
 }
 export {
 	registerUser,
@@ -82,4 +94,7 @@ export {
 	fetchPost,
 	editPost,
 	deleteUser,
+	ChartItemDelete,
+	fetchChartDetail,
+	fetchChartUpdate,
 };

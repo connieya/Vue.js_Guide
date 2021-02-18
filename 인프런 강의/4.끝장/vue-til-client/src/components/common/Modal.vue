@@ -86,7 +86,8 @@ export default {
 				// this.$router.push('/bar');
 				// this.$router.go();
 				this.$emit('close');
-				this.$emit('refreshs');
+				// this.$router.go(-1);
+				// this.$emit('reload');
 			} else {
 				alert('차트 등록 실패');
 			}

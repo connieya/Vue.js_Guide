@@ -60,6 +60,10 @@ export default new VueRouter({
 			component: () => import('@/views/MainPage'),
 		},
 		{
+			path: '/updatePage/:chartNo',
+			component: () => import('@/views/chartUpdatePage'),
+		},
+		{
 			path: '/main/bar',
 			component: () => import('@/views/BarChartPage'),
 		},

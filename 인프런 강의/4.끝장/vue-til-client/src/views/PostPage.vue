@@ -1,10 +1,5 @@
 <template>
 	<div>
-		<!-- <a href="javascript:;" @click="logoutUser">로그아웃</a>
-		<my-switch
-			:propsdata="switchValue"
-			@switchValueChanged="switchButton"
-		></my-switch> -->
 		<div class="main">
 			<router-link to="/add">
 				<i class="fas fa-plus-square"></i>
@@ -30,9 +25,8 @@
 import { fetchPosts } from '@/api/index';
 import PostListItem from '../components/posts/PostListItem.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
-import MySwitch from '../components/common/MySwitch.vue';
 export default {
-	components: { PostListItem, LoadingSpinner, MySwitch },
+	components: { PostListItem, LoadingSpinner },
 	data() {
 		return {
 			switchValue: true,

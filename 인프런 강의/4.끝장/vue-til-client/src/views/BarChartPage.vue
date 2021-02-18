@@ -1,35 +1,45 @@
 <template>
 	<div>
-		<!-- <router-link to="/bar">막대차트</router-link>
-		<router-link to="/line">선차트</router-link> -->
+		<div class="minus">
+			<i class="fas fa-minus" @click="chartDelete"></i>
+		</div>
+
 		<bar-chart
 			v-if="loaded"
 			:targetData="targetValue"
 			:chartLabels="dateValue"
 			:performanceData="performanceValue"
-			:style="myStyles"
 		></bar-chart>
-		<div class="minus">
-			<i class="fas fa-minus" @click="chartDelete"></i>
-		</div>
-		<!-- <button @click="increase()">Increase height</button> -->
 
-		<span @click="addData"><i class="fas fa-plus-circle"></i></span>
-		<Modal v-if="showModal" @close="showModal = false" @refreshs="fetchData">
-			<h3 slot="header">차트 등록하기</h3>
-		</Modal>
-		<!-- <ul>
-			<li v-for="item in chartItem" :key="item.chartNo">{{ item.target }}</li>
-		</ul> -->
+		<div
+			v-for="item in chartItem"
+			v-bind:key="item.chartNo"
+			class="chartItemBox"
+		>
+			<span
+				>{{ item.chartDate }}
+				<i
+					class="fas fa-pen-square chartItem"
+					@click="updateChartData(item.chartNo)"
+				></i>
+				<i
+					class="fas fa-minus-circle chartItem"
+					@click="deleteChartData(item.chartNo)"
+				></i
+			></span>
+		</div>
 	</div>
 </template>
 
 <script>
 import BarChart from '../components/BarChart.vue';
-import Modal from '@/components/common/Modal';
-import { fetchChartList, lastChartItemDelete } from '@/api/index';
+import {
+	fetchChartList,
+	lastChartItemDelete,
+	ChartItemDelete,
+} from '@/api/index';
 export default {
-	components: { BarChart, Modal },
+	components: { BarChart },
 	data() {
 		return {
 			loaded: false,
@@ -53,30 +63,35 @@ export default {
 		async fetchData() {
 			try {
 				const response = await fetchChartList();
+				console.log('막대 그래프에서 차트 데이터 가져오기');
 				this.chartItem = response.data;
 				this.chartItem.forEach(item => {
-					// console.log('item!!!!!!!!!!', item);
 					this.targetValue.push(item.target); //  목표치
 					this.dateValue.push(item.chartDate);
 					this.performanceValue.push(item.performance); // 실적치
 					this.loaded = true;
-					console.log('하하하낭만ㅇㅁㅇ마');
 				});
 			} catch (error) {
 				console.log(error);
 			}
 		},
+		async deleteChartData(chartNo) {
+			console.log('sadsaads', chartNo);
+			const response = await ChartItemDelete(chartNo);
+			console.log(response);
+			this.$emit('refresh');
+		},
+		async updateChartData(chartNo) {
+			this.$router.push(`/updatePage/${chartNo}`);
+		},
 		async chartDelete() {
 			const ItemLength = this.chartItem.length;
 			const LastChartNo = this.chartItem[ItemLength - 1].chartNo;
-			// console.log('ddsadd', this.chartItem.length);
-			// console.log('ddsadadsadd', this.chartItem[ItemLength - 1]);
-			// console.log('ddsadadsadd12111', this.chartItem[ItemLength - 1].chartNo);
-			console.log('dsadd12111', LastChartNo);
 			try {
 				const response = await lastChartItemDelete(LastChartNo);
 				console.log(response);
-				this.$router.go();
+				// this.$router.go();
+				this.$emit('pageReload');
 			} catch (error) {
 				console.log('에러!!!', error);
 			}
@@ -84,14 +99,6 @@ export default {
 	},
 	created() {
 		this.fetchData();
-	},
-	computed: {
-		myStyles() {
-			return {
-				height: `${this.height}px`,
-				position: 'relative',
-			};
-		},
 	},
 };
 </script>
@@ -102,9 +109,6 @@ export default {
 	justify-content: flex-end;
 	margin-right: 10px;
 }
-.fa-plus-circle {
-	font-size: 2.9rem;
-}
 .fa-minus {
 	font-size: 2.9rem;
 }
@@ -112,5 +116,13 @@ export default {
 	display: flex;
 	justify-content: flex-end;
 	margin-right: 10px;
+}
+.chartItemBox {
+	display: inline;
+	margin: 12px;
+	font-size: 1.3rem;
+}
+.chartItem {
+	font-size: 1.9rem;
 }
 </style>

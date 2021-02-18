@@ -6,19 +6,29 @@
 			:performanceData="performanceValue"
 			:labelsDate="dateValue"
 		></line-chart>
-		<span @click="addData"><i class="fas fa-plus-circle"></i></span>
-		<Modal v-if="showModal" @close="showModal = false" @refreshs="fetchData">
-			<h3 slot="header">차트 등록하기</h3>
-		</Modal>
+
+		<div
+			v-for="item in chartItem"
+			v-bind:key="item.chartNo"
+			class="chartItemBox"
+		>
+			<span
+				>{{ item.chartDate }}
+				<i class="fas fa-pen-square chartItem"></i>
+				<i
+					class="fas fa-minus-circle chartItem"
+					@click="deleteChartData(item.chartNo)"
+				></i
+			></span>
+		</div>
 	</div>
 </template>
 
 <script>
-import Modal from '@/components/common/Modal';
 import LineChart from '../components/LineChart.vue';
-import { fetchChartList } from '@/api/index';
+import { fetchChartList, ChartItemDelete } from '@/api/index';
 export default {
-	components: { Modal, LineChart },
+	components: { LineChart },
 	data() {
 		return {
 			loaded: false,
@@ -30,9 +40,6 @@ export default {
 		};
 	},
 	methods: {
-		addData() {
-			this.showModal = true;
-		},
 		logoutUser() {
 			this.$store.commit('clearUserId');
 			this.$router.push('/intro');
@@ -40,6 +47,7 @@ export default {
 		async fetchData() {
 			try {
 				const response = await fetchChartList();
+				console.log('선 그래프에서 데이터 가져오기');
 				this.chartItem = response.data;
 				this.chartItem.forEach(item => {
 					this.targetValue.push(item.target); // 목표치
@@ -51,6 +59,12 @@ export default {
 				console.log(error);
 			}
 		},
+		async deleteChartData(chartNo) {
+			console.log('sadsaads', chartNo);
+			const response = await ChartItemDelete(chartNo);
+			console.log(response);
+			this.$emit('refresh');
+		},
 	},
 	created() {
 		this.fetchData();
@@ -61,5 +75,13 @@ export default {
 <style scoped>
 .fa-plus-circle {
 	font-size: 2.9rem;
+}
+.chartItemBox {
+	display: inline;
+	margin: 12px;
+	font-size: 1.3rem;
+}
+.chartItem {
+	font-size: 1.9rem;
 }
 </style>
