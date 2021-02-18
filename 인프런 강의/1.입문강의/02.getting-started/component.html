@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <app-header></app-header>
+        <app-footer></app-footer>
+        <app-section></app-section>
+        <my-content></my-content>
+    </div>
+
+    <div id="cony">
+        {{message}}
+        <app-footer></app-footer>
+        <!-- <app-section></app-section> // 전역 컴포넌트가 아님 #app에 있는 지역 컴포넌트임  -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // Vue.component('컴포넌트 이름', 컴포넌트 내용);
+        Vue.component('app-header',{
+            template: '<h1>헤더임</h1>'
+        });
+
+        // 전역 컴포넌트  이름을 등록 할 때 Footer, app-Footer로 하니깐 등록이 안됨
+        Vue.component('AppFooter',{
+            template : '<p>푸터입니다</p>'
+        })
+
+        new Vue({
+            el : '#app',
+            components:{
+                'app-section' : {
+                    template : '<p>섹션입니당~~</p>'
+                },
+                'MyContent' :{
+                    template : '<div>내용입니다</div>'
+                }
+            }
+        });
+
+        new Vue({
+            el : '#cony',
+            data(){
+                return{
+
+                    message : '코니야~'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

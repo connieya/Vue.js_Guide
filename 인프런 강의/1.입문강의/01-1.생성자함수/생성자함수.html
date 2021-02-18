@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>생성자 함수 사용하기</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="생성자함수.js"></script>
+
+    <script>
+        function Vue(){
+            this.logText = function(){
+                console.log("안녕ㅎㅎ");
+            }
+        }
+        var vm = new Vue();
+    </script>
+</body>
+</html>
