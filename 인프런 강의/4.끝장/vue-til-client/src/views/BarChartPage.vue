@@ -10,6 +10,10 @@
 			:chartLabels="dateValue"
 			:performanceData="performanceValue"
 		></bar-chart>
+		<chart-update-modal
+			v-if="updateModal"
+			@close="updateModal = false"
+		></chart-update-modal>
 
 		<div
 			v-for="item in chartItem"
@@ -18,10 +22,11 @@
 		>
 			<span
 				>{{ item.chartDate }}
-				<i
+				<!-- <i
 					class="fas fa-pen-square chartItem"
 					@click="updateChartData(item.chartNo)"
-				></i>
+				></i> -->
+				<i class="fas fa-pen-square chartItem" @click="updateModal = true"></i>
 				<i
 					class="fas fa-minus-circle chartItem"
 					@click="deleteChartData(item.chartNo)"
@@ -38,12 +43,13 @@ import {
 	lastChartItemDelete,
 	ChartItemDelete,
 } from '@/api/index';
+import ChartUpdateModal from '../components/common/ChartUpdateModal.vue';
 export default {
-	components: { BarChart },
+	components: { BarChart, ChartUpdateModal },
 	data() {
 		return {
 			loaded: false,
-			showModal: false,
+			updateModal: false,
 			targetValue: [],
 			performanceValue: [],
 			chartItem: [],
@@ -51,15 +57,6 @@ export default {
 		};
 	},
 	methods: {
-		increase() {
-			this.height += 10;
-			console.log('sadasdadasd');
-		},
-
-		addData() {
-			this.showModal = true;
-		},
-
 		async fetchData() {
 			try {
 				const response = await fetchChartList();

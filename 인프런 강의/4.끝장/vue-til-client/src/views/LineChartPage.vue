@@ -32,7 +32,6 @@ export default {
 	data() {
 		return {
 			loaded: false,
-			showModal: false,
 			targetValue: [],
 			performanceValue: [],
 			chartItem: [],
