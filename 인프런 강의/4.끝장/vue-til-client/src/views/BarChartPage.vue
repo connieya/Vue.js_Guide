@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!-- 토글 버튼 -->
-		<div class="switch-component-wrapper">
+		<div class="switch-component-wrapper" v-if="toggleView">
 			<div
 				class="switch-wrapper"
 				:class="{ on: switchOfOff, off: !switchOfOff }"
@@ -94,7 +94,8 @@ export default {
 			dateValue: [],
 			chartNo: '',
 			switchOfOff: true,
-			// 토글버튼 스위치
+			// 토글버튼 스위치,
+			toggleView: false,
 		};
 	},
 	methods: {
@@ -115,6 +116,7 @@ export default {
 			this.showModal = true; // 모달 오픈하는 plus 아이콘 메서드
 		},
 		async deleteUserData() {
+			console.log('삭제 버튼 토큰:', this.$store.state.token);
 			const response = await deleteUser(this.$store.state.token);
 			console.log(response);
 			if (response.data === 1) {
@@ -132,11 +134,13 @@ export default {
 			try {
 				const response = await fetchChartList();
 				console.log('막대 그래프에서 차트 데이터 가져오기');
+
 				this.chartItem = response.data;
 				this.chartItem.forEach(item => {
 					this.targetValue.push(item.target); //  목표치
 					this.dateValue.push(item.chartDate);
 					this.performanceValue.push(item.performance); // 실적치
+					this.toggleView = true;
 					this.loaded = true;
 				});
 			} catch (error) {

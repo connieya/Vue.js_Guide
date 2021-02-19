@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!-- 토글 버튼 -->
-		<div class="switch-component-wrapper">
+		<div class="switch-component-wrapper" v-if="toggleView">
 			<div
 				class="switch-wrapper"
 				:class="{ on: switchOfOff, off: !switchOfOff }"
@@ -80,6 +80,7 @@ export default {
 			chartNo: '',
 			switchOfOff: false,
 			// 토글버튼 스위치
+			toggleView: false,
 		};
 	},
 	methods: {
@@ -123,6 +124,7 @@ export default {
 					this.targetValue.push(item.target); // 목표치
 					this.dateValue.push(item.chartDate);
 					this.performanceValue.push(item.performance); //실적치
+					this.toggleView = true;
 					this.loaded = true;
 				});
 			} catch (error) {
