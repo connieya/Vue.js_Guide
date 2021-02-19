@@ -2,12 +2,12 @@ import axios from 'axios';
 // import store from '../store';
 import { setInterceptors } from '@/api/common/interceptors';
 
+// 엑시오스 초기화 함수
 function createInstance() {
 	// axios api 이다
 	const instance = axios.create({
 		baseURL: process.env.VUE_APP_API_URL,
 		// headers: {
-		// 	Authorization: 'test1234',
 		// Authorization:  store.state.token,
 		// 토큰 값이 있다고 가정해도 크롬 - 네트워크 - 헤더에 Authorization 값이 없다.
 		// 초기에 있는 토큰 값이 데이터로 전송됨

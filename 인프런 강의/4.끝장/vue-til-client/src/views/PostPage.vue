@@ -37,6 +37,7 @@ export default {
 	methods: {
 		async fetchData() {
 			this.isLoading = true;
+			// post 데이터 리스트
 			const response = await fetchPosts();
 			this.isLoading = false;
 			this.postItem = response.data;

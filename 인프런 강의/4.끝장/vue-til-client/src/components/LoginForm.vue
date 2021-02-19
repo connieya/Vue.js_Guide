@@ -53,13 +53,12 @@ export default {
 					alert('로그인 실패');
 				} else {
 					console.log('222', response);
-					// 나는 jwt 값을 지정하지 않았기 때문에 token 값이 없음
 
 					this.$store.commit('setUserId', response.data.userId);
-					this.$store.commit('setToken', response.data.userNo);
+					this.$store.commit('setToken', response.data.userNo); // 자바스크립트 범위에서 저장
 					saveUserToCookie(response.data.userId);
-					saveAuthToCookie(response.data.userNo);
-					this.$router.push('/main');
+					saveAuthToCookie(response.data.userNo); // 브라우저에 쿠키값 저장
+					this.$router.push('/main/bar');
 				}
 			} catch (error) {
 				console.log(error);

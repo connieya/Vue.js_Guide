@@ -4,9 +4,7 @@
 			<div class="modal-wrapper">
 				<div class="modal-container">
 					<div class="modal-header">
-						<slot name="header">
-							차트 데이터 수정하기
-						</slot>
+						<slot name="header"> 차트 데이터 수정하기 ,{{ propsdata }} </slot>
 					</div>
 
 					<div class="modal-body">
@@ -38,7 +36,7 @@
 								</div>
 								<div class="modalBtns">
 									<button class="btn btn-primary" type="submit">
-										등록
+										수정
 									</button>
 									<button
 										class="btn btn-secondary"
@@ -62,35 +60,31 @@
 </template>
 
 <script>
-import { fetchChart } from '@/api/index';
+import { fetchChartUpdate, fetchChartDetail } from '@/api/index';
 export default {
+	props: ['propsdata'],
 	data() {
 		return {
-			chartTitle: '',
 			target: '',
 			performance: '',
 			chartDate: '',
 		};
 	},
+	async created() {
+		const response = await fetchChartDetail(this.propsdata);
+		this.target = response.data.target;
+		this.performance = response.data.performance;
+		this.chartDate = response.data.chartDate;
+	},
 	methods: {
 		async submitForm() {
-			const chartData = {
+			const response = await fetchChartUpdate(this.propsdata, {
+				chartDate: this.chartDate,
 				target: this.target,
 				performance: this.performance,
-				chartDate: this.chartDate,
-			};
-			const response = await fetchChart(chartData);
+			});
 			console.log(response);
-			if (response.data === 1) {
-				// alert('차트가 등록 되었습니다.');
-				// this.$router.push('/bar');
-				// this.$router.go();
-				this.$emit('close');
-				// this.$router.go(-1);
-				// this.$emit('reload');
-			} else {
-				alert('차트 등록 실패');
-			}
+			this.$router.go();
 		},
 	},
 };

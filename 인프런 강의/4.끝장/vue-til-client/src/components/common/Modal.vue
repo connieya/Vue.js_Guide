@@ -66,7 +66,6 @@ import { fetchChart } from '@/api/index';
 export default {
 	data() {
 		return {
-			chartTitle: '',
 			target: '',
 			performance: '',
 			chartDate: '',
@@ -84,8 +83,8 @@ export default {
 			if (response.data === 1) {
 				// alert('차트가 등록 되었습니다.');
 				// this.$router.push('/bar');
-				// this.$router.go();
-				this.$emit('close');
+				this.$router.go();
+				// this.$emit('close');
 				// this.$router.go(-1);
 				// this.$emit('reload');
 			} else {

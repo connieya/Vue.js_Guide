@@ -1,9 +1,9 @@
 function saveAuthToCookie(value) {
-	document.cookie = `til_auth=${value}`;
+	document.cookie = `tokenValue=${value}`;
 }
 
 function saveUserToCookie(value) {
-	document.cookie = `til_user = ${value}`;
+	document.cookie = `userId = ${value}`;
 }
 function getAuthFromCookie() {
 	return document.cookie.replace(
@@ -20,7 +20,10 @@ function getUserFromCookie() {
 }
 
 function deleteCookie(value) {
-	document.cookie = `${value}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+	document.cookie = `tokenValue=${value}; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/`;
+}
+function deleteCookie2(value) {
+	document.cookie = `userId=${value}; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/`;
 }
 
 export {
@@ -29,4 +32,5 @@ export {
 	saveAuthToCookie,
 	getAuthFromCookie,
 	deleteCookie,
+	deleteCookie2,
 };
