@@ -4,6 +4,9 @@ export default {
 	extends: Bar,
 	data() {
 		return {
+			target: [],
+			product: [],
+			date: [],
 			options: {
 				scales: {
 					yAxes: [
@@ -37,18 +40,6 @@ export default {
 			type: Array,
 			required: true,
 		},
-		target: {
-			type: Array,
-			required: true,
-		},
-		product: {
-			type: Array,
-			required: true,
-		},
-		date: {
-			type: Array,
-			required: true,
-		},
 	},
 	mounted() {
 		this.rerenderBarChart();
@@ -77,21 +68,27 @@ export default {
 			);
 		},
 	},
-	watch: {
-		target: function() {
-			this.rerenderBarChart();
-		},
-		product: function() {
-			this.rerenderBarChart();
-		},
-		date: function() {
-			this.rerenderBarChart();
-		},
-	},
-	computed() {},
+	// watch: {
+	// 	target: function() {
+	// 		this.rerenderBarChart();
+	// 	},
+	// 	product: function() {
+	// 		this.rerenderBarChart();
+	// 	},
+	// 	date: function() {
+	// 		this.rerenderBarChart();
+	// 	},
+	// },
+
 	created() {
-		console.log('date', this.date);
+		console.log('datsssssssssssssssssse', this.date);
 		console.log('propsdata :', this.propsdata);
+		this.propsdata.forEach(item => {
+			console.log('item!!!!!:', item);
+			this.target.push(item.target);
+			this.product.push(item.product);
+			this.date.push(item.productionDate);
+		});
 	},
 };
 </script>

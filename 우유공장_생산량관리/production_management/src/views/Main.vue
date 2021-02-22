@@ -1,11 +1,6 @@
 <template>
 	<div>
-		<bar-chart
-			:propsdata="productionData"
-			:target="target"
-			:date="date"
-			:product="product"
-		></bar-chart>
+		<bar-chart :propsdata="fetchData"></bar-chart>
 		<table>
 			<tr>
 				<td><input value="일자" readonly /></td>
@@ -29,7 +24,7 @@
 				<td><input type="text" value="목표" /></td>
 				<td><input type="number" value="" v-model="target" /></td>
 			</tr>
-			<tr v-for="data in productionData" v-bind:key="data.id">
+			<tr v-for="data in fetchData" v-bind:key="data.id">
 				<td><input type="text" value="생산" /></td>
 				<td><input type="number" v-model="data.product" /></td>
 			</tr>
@@ -98,7 +93,7 @@
 		></register-modal>
 
 		<div>
-			<table v-for="data in productionData" v-bind:key="data.id">
+			<table v-for="data in fetchData" v-bind:key="data.id">
 				<thead>
 					<tr>
 						<th>일자</th>
@@ -116,15 +111,13 @@
 					</tr> -->
 				</tbody>
 			</table>
+			{{ date }}
 			<p>
 				------------------------------------------------------------------------
 			</p>
-			{{ date }}
-			{{ target }}
 		</div>
-
 		<div class="dataList">
-			<div v-for="data in productionData" v-bind:key="data.id">
+			<div v-for="data in fetchData" v-bind:key="data.id">
 				{{ data.productionDate }}
 				목표치:{{ data.target }} 실적치:{{ data.product }}
 			</div>
@@ -144,7 +137,7 @@ export default {
 	data() {
 		return {
 			showModal: false,
-			productionData: [],
+			fetchData: [],
 			target: [],
 			product: [],
 			date: [],
@@ -158,28 +151,35 @@ export default {
 		OpenModal() {
 			this.showModal = true;
 		},
-		async fetchProductionData() {
-			const response = await getProductionData(this.propsdata);
+		async fetchProductionData(value) {
+			const response = await getProductionData(value);
 			console.log('데이터 갯수  :', response.data.length);
-			this.productionData = response.data;
-			console.log('응답 받은 데이터들 :', this.productionData);
-			this.productionData.forEach(item => {
-				this.target.push(item.target);
-				this.product.push(item.product);
-				this.date.push(item.productionDate);
-			});
+			this.fetchData = response.data;
+			// const jsonParsingData = JSON.stringify(response.data);
+			console.log('응답 받은 데이터들 :', this.fetchData);
+			for (let data in this.fetchData) {
+				console.log('data: ', this.fetchData[data].productionDate);
+				this.date.push(this.fetchData[data].productionDate);
+			}
+			console.log('날짜 : ', this.date);
+			// this.fetchData.forEach(item => {
+			// 	this.target.push(item.target);
+			// 	this.product.push(item.product);
+			// 	this.date.push(item.productionDate);
+			// 	console.log('fetch한 date : ', this.date);
+			// });
 		},
 	},
 	watch: {
-		// 원래 created 라이프사이클을 이용해서 this.propsdata 값을 확인하려고 했는데
-		// 아무 값도 나타나지 않았다. 알고보니 props로 내려준 값이 계속 변해서 그렇다.
-		// 이럴 때는 watch를 이용해서 값을 확인할수 있다.
-		propsdata: {
-			immediate: true,
-			handler: function() {
-				this.fetchProductionData();
-			},
+		propsdata: function(value) {
+			this.fetchProductionData(value);
 		},
+		// propsdata: {
+		// 	immediate: true,
+		// 	handler: function() {
+		// 		this.fetchProductionData();
+		// 	},
+		// },
 	},
 };
 </script>

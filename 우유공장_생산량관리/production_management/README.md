@@ -2,4 +2,4 @@
 
 ```
 npm install vue-chartjs chart.js --save
-``
+```

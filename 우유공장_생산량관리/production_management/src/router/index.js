@@ -15,6 +15,10 @@ const routes = [
 		path: '/main',
 		component: () => import('@/views/Main'),
 	},
+	{
+		path: '/watch',
+		component: () => import('@/views/Watch'),
+	},
 ];
 
 const router = new VueRouter({
