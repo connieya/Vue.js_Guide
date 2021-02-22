@@ -7,6 +7,14 @@ const routes = [
 	// route level code-splitting
 	// this generates a separate chunk (about.[hash].js) for this route
 	// which is lazy-loaded when the route is visited.
+	{
+		path: '/',
+		redirect: '/main',
+	},
+	{
+		path: '/main',
+		component: () => import('@/views/Main'),
+	},
 ];
 
 const router = new VueRouter({

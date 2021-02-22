@@ -4,9 +4,7 @@
 			<div class="modal-wrapper">
 				<div class="modal-container">
 					<div class="modal-header">
-						<slot name="header">
-							default header
-						</slot>
+						<slot name="header"> {{ propsdata }}월 생산량 입력 </slot>
 					</div>
 
 					<div class="modal-body">
@@ -190,7 +188,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { insertProductionData } from '@/api/index';
 export default {
 	props: {
 		propsdata: String,
@@ -208,43 +206,43 @@ export default {
 			if (this.Target === '' || this.Product === '' || this.DateValue === '') {
 				alert('입력 하지 않는 값이 있습니다.');
 			} else {
-				const chartData = {
+				const productionData = {
 					target: this.Target,
 					product: this.Product,
 					productionDate: this.DateValue,
 				};
-				const response = await axios.post(
-					'http://localhost:8000/insert',
-					chartData,
-				);
+				const response = await insertProductionData(productionData);
 				console.log('서버로 데이터 보냄 응답 값은 : ', response);
+				// this.$router.go();
+				this.$emit('close');
+				this.$emit('refresh');
 			}
 		},
 	},
 	created() {
-		if (this.propsdata === 'January') {
+		if (this.propsdata === '2021-01') {
 			this.Month = '01';
-		} else if (this.propsdata === 'February') {
+		} else if (this.propsdata === '2021-02') {
 			this.Month = '02';
-		} else if (this.propsdata === 'March') {
+		} else if (this.propsdata === '2021-03') {
 			this.Month = '03';
-		} else if (this.propsdata === 'April') {
+		} else if (this.propsdata === '2021-04') {
 			this.Month = '04';
-		} else if (this.propsdata === 'May') {
+		} else if (this.propsdata === '2021-05') {
 			this.Month = '05';
-		} else if (this.propsdata === 'June') {
+		} else if (this.propsdata === '2021-06') {
 			this.Month = '06';
-		} else if (this.propsdata === 'July') {
+		} else if (this.propsdata === '2021-07') {
 			this.Month = '07';
-		} else if (this.propsdata === 'August') {
+		} else if (this.propsdata === '2021-08') {
 			this.Month = '08';
-		} else if (this.propsdata === 'September') {
+		} else if (this.propsdata === '2021-09') {
 			this.Month = '09';
-		} else if (this.propsdata === 'October') {
+		} else if (this.propsdata === '2021-10') {
 			this.Month = '10';
-		} else if (this.propsdata === 'November') {
+		} else if (this.propsdata === '2021-11') {
 			this.Month = '11';
-		} else if (this.propsdata === 'December') {
+		} else if (this.propsdata === '2021-12') {
 			this.Month = '12';
 		}
 	},

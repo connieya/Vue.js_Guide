@@ -4,18 +4,18 @@
 			<div>우유</div>
 			<div>
 				<select name="month" id="" v-model="selected">
-					<option value="January">1월</option>
-					<option value="February">2월</option>
-					<option value="March">3월</option>
-					<option value="April">4월</option>
-					<option value="May">5월</option>
-					<option value="June">6월</option>
-					<option value="July">7월</option>
-					<option value="August">8월</option>
-					<option value="September">9월</option>
-					<option value="October">10월</option>
-					<option value="November">11월</option>
-					<option value="December">12월</option>
+					<option value="2021-01">1월</option>
+					<option value="2021-02">2월</option>
+					<option value="2021-03">3월</option>
+					<option value="2021-04">4월</option>
+					<option value="2021-05">5월</option>
+					<option value="2021-06">6월</option>
+					<option value="2021-07">7월</option>
+					<option value="2021-08">8월</option>
+					<option value="2021-09">9월</option>
+					<option value="2021-10">10월</option>
+					<option value="2021-11">11월</option>
+					<option value="2021-12">12월</option>
 				</select>
 				일별 생산현황
 			</div>
@@ -33,7 +33,7 @@ export default {
 	},
 	data() {
 		return {
-			selected: 'February',
+			selected: '2021-02',
 		};
 	},
 };
