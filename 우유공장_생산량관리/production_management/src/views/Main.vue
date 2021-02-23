@@ -1,6 +1,11 @@
 <template>
 	<div>
-		<bar-chart :propsdata="fetchData"></bar-chart>
+		<bar-chart
+			:target="this.target"
+			:date="this.date"
+			:product="this.product"
+			:propsdata="this.fetchData"
+		></bar-chart>
 		<table>
 			<tr>
 				<td><input value="일자" readonly /></td>
@@ -91,37 +96,13 @@
 			@refresh="fetchProductionData"
 			:propsdata="propsdata"
 		></register-modal>
-
-		<div>
-			<table v-for="data in fetchData" v-bind:key="data.id">
-				<thead>
-					<tr>
-						<th>일자</th>
-						<th>{{ data.productionDate }}</th>
-					</tr>
-				</thead>
-				<tbody>
-					<!-- <tr>
-						<td>목표치</td>
-						<td>{{ data.target }}</td>
-					</tr>
-					<tr>
-						<td>실적치</td>
-						<td>{{ data.product }}</td>
-					</tr> -->
-				</tbody>
-			</table>
-			{{ date }}
-			<p>
-				------------------------------------------------------------------------
-			</p>
-		</div>
 		<div class="dataList">
-			<div v-for="data in fetchData" v-bind:key="data.id">
+			<div v-for="data in this.fetchData" v-bind:key="data.id">
 				{{ data.productionDate }}
 				목표치:{{ data.target }} 실적치:{{ data.product }}
 			</div>
 		</div>
+		{{ date }}
 	</div>
 </template>
 
@@ -141,6 +122,7 @@ export default {
 			target: [],
 			product: [],
 			date: [],
+			itemBox: [],
 		};
 	},
 	components: {
@@ -151,33 +133,45 @@ export default {
 		OpenModal() {
 			this.showModal = true;
 		},
-		async fetchProductionData(value) {
-			const response = await getProductionData(value);
-			console.log('데이터 갯수  :', response.data.length);
+		async fetchProductionData() {
+			const response = await getProductionData(this.propsdata);
 			this.fetchData = response.data;
-			// const jsonParsingData = JSON.stringify(response.data);
-			console.log('응답 받은 데이터들 :', this.fetchData);
-			for (let data in this.fetchData) {
-				console.log('data: ', this.fetchData[data].productionDate);
-				this.date.push(this.fetchData[data].productionDate);
-			}
-			console.log('날짜 : ', this.date);
-			// this.fetchData.forEach(item => {
-			// 	this.target.push(item.target);
-			// 	this.product.push(item.product);
-			// 	this.date.push(item.productionDate);
-			// 	console.log('fetch한 date : ', this.date);
+			console.log('this.fetchData :', this.fetchData);
+			console.log('this,fetchData[0]', this.fetchData[0]);
+			this.date = this.fetchData.map(a => a.productionDate);
+			this.product = this.fetchData.map(a => a.product);
+			this.target = this.fetchData.map(a => a.target);
+
+			// this.fetchData.map(value => {
+			// 	// console.log('dddd', value);
+			// 	this.itemBox.push(value);
+			// 	// console.log('aaaa', this.itemBox);
 			// });
+			// this.$store.commit('getProduction', this.fetchData);
 		},
+		// DataSpilt() {
+		// 	this.fetchData.map(item => {
+		// 		// console.log('item :', item);
+		// 		// this.itemBox.push(item);
+		// 		this.$store.commit('getItem', item);
+		// 	});
+		// },
 	},
+
 	watch: {
-		propsdata: function(value) {
-			this.fetchProductionData(value);
+		propsdata: {
+			immediate: true,
+			handler: function() {
+				this.fetchProductionData();
+				// this.$store.dispatch('FETCH_DATAS', this.propsdata);
+			},
 		},
-		// propsdata: {
+		// fetchData: {
+		// 	// deep: true,
 		// 	immediate: true,
-		// 	handler: function() {
-		// 		this.fetchProductionData();
+		// 	handler(after, before) {
+		// 		// console.log('after : ', after, 'before: ', before);
+		// 		this.DataSpilt();
 		// 	},
 		// },
 	},
