@@ -48,14 +48,7 @@ export default {
 			type: Array,
 			required: true,
 		},
-		propsdata: {
-			type: Array,
-			required: true,
-		},
 	},
-	// mounted() {
-	// 	this.rerenderBarChart();
-	// },
 	methods: {
 		rerenderBarChart: function() {
 			this.renderChart(

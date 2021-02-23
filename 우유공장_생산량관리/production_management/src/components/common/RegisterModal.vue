@@ -211,11 +211,16 @@ export default {
 					product: this.Product,
 					productionDate: this.DateValue,
 				};
-				const response = await insertProductionData(productionData);
-				console.log('서버로 데이터 보냄 응답 값은 : ', response);
-				// this.$router.go();
-				this.$emit('close');
-				this.$emit('refresh');
+				try {
+					const response = await insertProductionData(productionData);
+					console.log('서버로 데이터 보냄 응답 값은 : ', response);
+					// this.$router.go();
+					this.$emit('close');
+					this.$emit('refresh');
+				} catch (error) {
+					alert('등록 실패');
+					console.log(error);
+				}
 			}
 		},
 	},

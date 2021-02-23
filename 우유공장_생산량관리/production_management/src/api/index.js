@@ -11,4 +11,8 @@ function getProductionData(month) {
 function insertProductionData(productionData) {
 	return axios.post(`${config.baseUrl}/insert`, productionData);
 }
-export { getProductionData, insertProductionData };
+
+function getProductionDayDate(day) {
+	return axios.get(`${config.baseUrl}/selectDate/${day}`);
+}
+export { getProductionData, insertProductionData, getProductionDayDate };
