@@ -146,6 +146,7 @@ export default {
 		OpenUpdateModal() {
 			this.updateModal = true;
 		},
+		// 월별 데이터 가져오기
 		async fetchProductionData() {
 			const response = await getProductionData(this.propsdata);
 			this.fetchData = response.data;

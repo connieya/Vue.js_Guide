@@ -168,28 +168,40 @@
 										/>
 									</template>
 								</div>
-								<div>
-									<input
-										type="number"
-										id="target"
-										v-model="Target"
-										placeholder="목표치를 입력하세요"
-										required
-									/>
-								</div>
-								<div>
-									<input
-										type="number"
-										id="product"
-										v-model="Product"
-										placeholder="실적치를 입력하세요"
-										required
-									/>
-								</div>
-								<div class="modalBtns">
-									<button class="btn btn-primary" type="submit">
-										등록
-									</button>
+								<template v-if="!this.$store.state.dayData">
+									<div>
+										<input
+											type="number"
+											id="target"
+											v-model="Target"
+											placeholder="목표치를 입력하세요"
+											required
+										/>
+									</div>
+									<div>
+										<input
+											type="number"
+											id="product"
+											v-model="Product"
+											placeholder="실적치를 입력하세요"
+											required
+										/>
+									</div>
+									<div class="modalBtns">
+										<button class="btn btn-primary" type="submit">
+											등록
+										</button>
+										<button
+											class="btn btn-secondary"
+											type="button"
+											@click="$emit('close')"
+										>
+											취소
+										</button>
+									</div>
+								</template>
+								<template v-else>
+									<p>이미 등록하셨습니다.</p>
 									<button
 										class="btn btn-secondary"
 										type="button"
@@ -197,7 +209,7 @@
 									>
 										취소
 									</button>
-								</div>
+								</template>
 							</form>
 						</slot>
 					</div>
@@ -237,6 +249,14 @@ export default {
 					console.log(error);
 				}
 			}
+		},
+	},
+	watch: {
+		DateValue: {
+			immediate: true,
+			handler: function() {
+				this.$store.dispatch('FETCH_DAY', this.DateValue);
+			},
 		},
 	},
 };

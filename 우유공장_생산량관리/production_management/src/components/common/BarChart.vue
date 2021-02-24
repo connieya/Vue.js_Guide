@@ -45,10 +45,6 @@ export default {
 			type: Array,
 			required: true,
 		},
-		// height: {
-		// 	type: Number,
-		// 	required: true,
-		// },
 	},
 	methods: {
 		rerenderBarChart() {
