@@ -42,7 +42,14 @@
 								</div>
 								<div class="modalBtns">
 									<button class="btn btn-primary" type="submit">
-										등록
+										수정
+									</button>
+									<button
+										class="btn btn-danger"
+										type="button"
+										@click="deleteData"
+									>
+										삭제
 									</button>
 									<button
 										class="btn btn-secondary"
@@ -63,9 +70,10 @@
 
 <script>
 import {
-	insertProductionData,
 	getProductionData,
 	getProductionDayDate,
+	putProductionDayData,
+	deleteProductionDayData,
 } from '@/api/index';
 export default {
 	props: {
@@ -78,44 +86,51 @@ export default {
 			date: [],
 			fetchData: [],
 			dateSelected: '',
+			id: '',
 		};
 	},
 	methods: {
+		// 해당 날짜 데이터 수정하기
 		async submitForm() {
-			if (this.Target === '' || this.Product === '' || this.DateValue === '') {
-				alert('입력 하지 않는 값이 있습니다.');
-			} else {
-				const productionData = {
-					target: this.Target,
-					product: this.Product,
-					productionDate: this.DateValue,
-				};
-				try {
-					const response = await insertProductionData(productionData);
-					console.log('서버로 데이터 보냄 응답 값은 : ', response);
-					// this.$router.go();
-					this.$emit('close');
-					this.$emit('refresh');
-				} catch (error) {
-					alert('등록 실패');
-					console.log(error);
-				}
+			const productionData = {
+				target: this.target,
+				product: this.product,
+				productionDate: this.dateSelected,
+			};
+			try {
+				const response = await putProductionDayData(this.id, productionData);
+				console.log('수정한 데이터 보냄 응답 값은 : ', response);
+				this.$emit('close');
+				this.$emit('refresh');
+			} catch (error) {
+				alert('등록 실패');
+				console.log(error);
 			}
 		},
+		// 해당 날짜 데이터 삭제하기
+		async deleteData() {
+			if (confirm('정말 삭제 하시겠습니까?')) {
+				const { data } = await deleteProductionDayData(this.id);
+				console.log(data);
+				this.$emit('close');
+				this.$emit('refresh');
+			}
+		},
+		// 해당 날짜 데이터 값 가져오기
 		async getDayData() {
 			const { data } = await getProductionDayDate(this.dateSelected);
 			console.log('해당 날짜로 받은 데이터 값 :', data);
 			this.target = data.target;
 			this.product = data.product;
+			this.id = data.id;
 		},
 	},
+	// 월별 데이터 리스트 가져오기
 	async created() {
 		const response = await getProductionData(this.$store.state.propsdata);
 		this.fetchData = response.data;
 		this.date = this.fetchData.map(a => a.productionDate);
 		console.log('수정 모달 날짜 들: ', this.date);
-		// this.product = this.fetchData.map(a => a.product);
-		// this.target = thus,this.fetchData.map(a => a.target);
 	},
 	watch: {
 		dateSelected: {
@@ -146,7 +161,7 @@ export default {
 	vertical-align: middle;
 }
 .modal-container {
-	width: 50%;
+	width: 30%;
 	margin: 0px auto;
 	padding: 20px 30px;
 	background-color: #fff;

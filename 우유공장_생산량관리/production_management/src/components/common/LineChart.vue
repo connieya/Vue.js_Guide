@@ -1,7 +1,7 @@
 <script>
-import { Bar } from 'vue-chartjs';
+import { Line } from 'vue-chartjs';
 export default {
-	extends: Bar,
+	extends: Line,
 	data() {
 		return {
 			options: {
@@ -19,7 +19,7 @@ export default {
 					xAxes: [
 						{
 							gridLines: {
-								display: false,
+								display: true,
 							},
 						},
 					],
@@ -35,23 +35,19 @@ export default {
 	props: {
 		target: {
 			type: Array,
-			required: true,
+			default: null,
 		},
 		product: {
 			type: Array,
-			required: true,
+			default: null,
 		},
 		date: {
 			type: Array,
-			required: true,
+			default: null,
 		},
-		// height: {
-		// 	type: Number,
-		// 	required: true,
-		// },
 	},
 	methods: {
-		rerenderBarChart() {
+		rerenderLineChart() {
 			this.renderChart(
 				{
 					labels: this.date,
@@ -59,14 +55,22 @@ export default {
 						{
 							label: '목표치',
 							colors: 'green',
-							backgroundColor: 'blue',
+							borderWidth: 2,
+							borderColor: 'blue',
+							backgroundColor: 'white',
+							pointBackgroundColor: 'blue',
 							data: this.target,
+							fill: false,
 						},
 						{
 							label: '실적치',
 							colors: 'green',
-							backgroundColor: 'red',
+							borderWidth: 2,
+							borderColor: 'red',
+							backgroundColor: 'white',
+							pointBackgroundColor: 'red',
 							data: this.product,
+							fill: false,
 						},
 					],
 				},
@@ -76,17 +80,14 @@ export default {
 	},
 	watch: {
 		target: {
-			handler: 'rerenderBarChart',
+			handler: 'rerenderLineChart',
 		},
 		product: {
-			handler: 'rerenderBarChart',
+			handler: 'rerenderLineChart',
 		},
 		date: {
-			handler: 'rerenderBarChart',
+			handler: 'rerenderLineChart',
 		},
-		// height: {
-		// 	handler: 'rerenderBarChart',
-		// },
 	},
 };
 </script>

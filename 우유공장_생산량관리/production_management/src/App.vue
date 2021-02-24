@@ -15,10 +15,10 @@ export default {
 </script>
 
 <style>
-body {
-	width: 90%;
+html {
+	width: 95%;
+	margin: 1.2rem auto;
 	border: 1px solid black;
-	padding: 10px;
-	margin: 10px auto;
+	padding: 1.8rem;
 }
 </style>

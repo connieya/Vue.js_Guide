@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<div class="header">
-			<div>우유</div>
-			<div>
+			<div><i class="fas fa-coffee"></i>우유</div>
+			<div class="options">
 				<select name="month" id="" v-model="selected">
 					<option value="2021-01">1월</option>
 					<option value="2021-02">2월</option>
@@ -43,5 +43,13 @@ export default {
 .header {
 	display: flex;
 	justify-content: space-between;
+	font-size: 1.5rem;
+}
+.options {
+	font-size: 1.2rem;
+}
+select {
+	color: #181010;
+	font-weight: 550;
 }
 </style>
