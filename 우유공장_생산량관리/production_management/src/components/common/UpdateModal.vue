@@ -60,6 +60,7 @@
 									</button>
 								</div>
 							</form>
+							{{ this.dateSelected }}
 						</slot>
 					</div>
 				</div>
@@ -116,21 +117,19 @@ export default {
 				this.$emit('refresh');
 			}
 		},
-		// 해당 날짜 데이터 값 가져오기
+		//#2번해당 날짜 데이터 값 가져오기
 		async getDayData() {
 			const { data } = await getProductionDayDate(this.dateSelected);
-			console.log('해당 날짜로 받은 데이터 값 :', data);
 			this.target = data.target;
 			this.product = data.product;
 			this.id = data.id;
 		},
 	},
-	// 월별 데이터 리스트 가져오기
+	// #1번 월별 데이터 리스트 가져오기
 	async created() {
 		const response = await getProductionData(this.$store.state.propsdata);
 		this.fetchData = response.data;
 		this.date = this.fetchData.map(a => a.productionDate);
-		console.log('수정 모달 날짜 들: ', this.date);
 	},
 	watch: {
 		dateSelected: {

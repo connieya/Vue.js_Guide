@@ -4,163 +4,139 @@
 			<div class="modal-wrapper">
 				<div class="modal-container">
 					<div class="modal-header">
-						<slot name="header">
-							{{ this.$store.state.propsdata }}월 생산량 입력
-						</slot>
+						<slot name="header"> {{ this.propsdata }}월 생산량 입력 </slot>
 					</div>
 
 					<div class="modal-body">
 						<slot name="body">
 							<form @submit.prevent="submitForm">
 								<div>
-									<template v-if="this.$store.state.propsdata === '2021-01'">
+									<template v-if="this.propsdata === '2021-01'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-01-01"
 											max="2021-01-30"
 											required
 										/>
 									</template>
-									<template
-										v-else-if="this.$store.state.propsdata === '2021-02'"
-									>
+									<template v-else-if="this.propsdata === '2021-02'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-02-01"
 											max="2021-02-28"
 											required
 										/>
 									</template>
-									<template
-										v-else-if="this.$store.state.propsdata === '2021-03'"
-									>
+									<template v-else-if="this.propsdata === '2021-03'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-03-01"
 											max="2021-03-30"
 											required
 										/>
 									</template>
-									<template
-										v-else-if="this.$store.state.propsdata === '2021-04'"
-									>
+									<template v-else-if="this.propsdata === '2021-04'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-04-01"
 											max="2021-04-30"
 											required
 										/>
 									</template>
-									<template
-										v-else-if="this.$store.state.propsdata === '2021-05'"
-									>
+									<template v-else-if="this.propsdata === '2021-05'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-05-01"
 											max="2021-05-30"
 											required
 										/>
 									</template>
-									<template
-										v-else-if="this.$store.state.propsdata === '2021-06'"
-									>
+									<template v-else-if="this.propsdata === '2021-06'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-06-01"
 											max="2021-06-30"
 											required
 										/>
 									</template>
-									<template
-										v-else-if="this.$store.state.propsdata === '2021-07'"
-									>
+									<template v-else-if="this.propsdata === '2021-07'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-07-01"
 											max="2021-07-30"
 											required
 										/>
 									</template>
-									<template
-										v-else-if="this.$store.state.propsdata === '2021-08'"
-									>
+									<template v-else-if="this.propsdata === '2021-08'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-08-01"
 											max="2021-08-30"
 											required
 										/>
 									</template>
-									<template
-										v-else-if="this.$store.state.propsdata === '2021-09'"
-									>
+									<template v-else-if="this.propsdata === '2021-09'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-09-01"
 											max="2021-09-30"
 											required
 										/>
 									</template>
-									<template
-										v-else-if="this.$store.state.propsdata === '2021-10'"
-									>
+									<template v-else-if="this.propsdata === '2021-10'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-10-01"
 											max="2021-10-30"
 											required
 										/>
 									</template>
-									<template
-										v-else-if="this.$store.state.propsdata === '2021-11'"
-									>
+									<template v-else-if="this.propsdata === '2021-11'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-11-01"
 											max="2021-11-30"
 											required
 										/>
 									</template>
-									<template
-										v-else-if="this.$store.state.propsdata === '2021-12'"
-									>
+									<template v-else-if="this.propsdata === '2021-12'">
 										<input
 											type="date"
 											id="Date"
-											v-model="DateValue"
+											v-model="date"
 											placeholder="날짜를 입력하세요"
 											min="2021-12-01"
 											max="2021-12-30"
@@ -168,13 +144,32 @@
 										/>
 									</template>
 								</div>
-								<template v-if="!this.$store.state.dayData">
+								<!-- <template v-if="this.fetchData">
+									<input
+										type="text"
+										placeholder="이미 등록한 날짜입니다."
+										readonly
+									/>
+									<input
+										type="text"
+										placeholder="다른 날짜를 선택하세요"
+										readonly
+									/>
+									<button
+										class="btn btn-secondary"
+										type="button"
+										@click="$emit('close')"
+									>
+										취소
+									</button>
+								</template> -->
+								<template>
 									<div>
 										<input
 											type="number"
 											id="target"
-											v-model="Target"
-											placeholder="목표치를 입력하세요"
+											v-model="target"
+											placeholder="목표량을 입력하세요"
 											required
 										/>
 									</div>
@@ -182,8 +177,8 @@
 										<input
 											type="number"
 											id="product"
-											v-model="Product"
-											placeholder="실적치를 입력하세요"
+											v-model="product"
+											placeholder="생산량을 입력하세요"
 											required
 										/>
 									</div>
@@ -200,16 +195,6 @@
 										</button>
 									</div>
 								</template>
-								<template v-else>
-									<p>이미 등록하셨습니다.</p>
-									<button
-										class="btn btn-secondary"
-										type="button"
-										@click="$emit('close')"
-									>
-										취소
-									</button>
-								</template>
 							</form>
 						</slot>
 					</div>
@@ -220,42 +205,62 @@
 </template>
 
 <script>
-import { insertProductionData } from '@/api/index';
+import { insertProductionData, getProductionDayDate } from '@/api/index';
 export default {
+	props: {
+		propsdata: String,
+	},
 	data() {
 		return {
-			Target: '',
-			Product: '',
-			DateValue: '',
+			target: '',
+			product: '',
+			date: '',
+			fetchData: '',
 		};
 	},
 	methods: {
 		async submitForm() {
-			if (this.Target === '' || this.Product === '' || this.DateValue === '') {
-				alert('입력 하지 않는 값이 있습니다.');
-			} else {
-				const productionData = {
-					target: this.Target,
-					product: this.Product,
-					productionDate: this.DateValue,
-				};
-				try {
-					const response = await insertProductionData(productionData);
-					console.log('서버로 데이터 보냄 응답 값은 : ', response);
-					this.$emit('close');
-					this.$emit('refresh');
-				} catch (error) {
-					alert('등록 실패');
-					console.log(error);
-				}
+			const productionData = {
+				target: this.target,
+				product: this.product,
+				productionDate: this.date,
+			};
+			try {
+				const response = await insertProductionData(productionData);
+				console.log('서버로 데이터 보냄 응답 값은 : ', response);
+				this.$emit('close');
+				this.$emit('refresh');
+			} catch (error) {
+				alert('이미 등록한 날짜 입니다.');
+				console.log(error);
+			}
+		},
+		async getDayDatas() {
+			try {
+				const response = await getProductionDayDate(this.date);
+				console.log('날짜데이터 응답 : ', response);
+				console.log('1111', response.data);
+				console.log('2222', response.data.id);
+				this.fetchData = response.data.id;
+			} catch (error) {
+				console.log('에러 : ', error);
 			}
 		},
 	},
+	// async created() {
+	// 	try {
+	// 		const response = await getProductionDayDate(this.date);
+	// 		console.log('날짜데이터 응답 : ', response);
+	// 	} catch (error) {
+	// 		console.log('에러 : ', error);
+	// 	}
+	// },
 	watch: {
-		DateValue: {
+		date: {
 			immediate: true,
 			handler: function() {
-				this.$store.dispatch('FETCH_DAY', this.DateValue);
+				// this.$store.dispatch('FETCH_DAY', this.date);
+				this.getDayDatas();
 			},
 		},
 	},
@@ -299,14 +304,6 @@ export default {
 .modal-default-button {
 	float: right;
 }
-/*
- * The following styles are auto-applied to elements with
- * transition="modal" when their visibility is toggled
- * by Vue.js.
- *
- * You can easily play with the modal transition by editing
- * these styles.
- */
 .modal-enter {
 	opacity: 0;
 }

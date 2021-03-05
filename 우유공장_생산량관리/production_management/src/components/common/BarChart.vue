@@ -53,13 +53,13 @@ export default {
 					labels: this.date,
 					datasets: [
 						{
-							label: '목표치',
+							label: '목표량(팩)',
 							colors: 'green',
 							backgroundColor: 'blue',
 							data: this.target,
 						},
 						{
-							label: '실적치',
+							label: '생산량(팩)',
 							colors: 'green',
 							backgroundColor: 'red',
 							data: this.product,

@@ -53,7 +53,7 @@ export default {
 					labels: this.date,
 					datasets: [
 						{
-							label: '목표치',
+							label: '목표량(팩)',
 							colors: 'green',
 							borderWidth: 2,
 							borderColor: 'blue',
@@ -63,7 +63,7 @@ export default {
 							fill: false,
 						},
 						{
-							label: '실적치',
+							label: '생산량(팩)',
 							colors: 'green',
 							borderWidth: 2,
 							borderColor: 'red',

@@ -36,38 +36,42 @@
 				<tr>
 					<td><input value="일자" readonly /></td>
 					<td v-for="data in fetchData.slice(0, 15)" :key="data.id">
-						<input type="text" :value="data.productionDate | subStr" />
+						<input type="text" :value="data.productionDate | subStr" readonly />
 					</td>
 				</tr>
 				<tr>
 					<td><input type="text" value="목표" readonly /></td>
 					<td v-for="data in fetchData.slice(0, 15)" :key="data.id">
-						<input type="number" v-model="data.target" />
+						<input type="number" v-model="data.target" readonly />
 					</td>
 				</tr>
 				<tr>
 					<td><input type="text" value="생산" readonly /></td>
 					<td v-for="data in fetchData.slice(0, 15)" :key="data.id">
-						<input type="number" v-model="data.product" />
+						<input type="number" v-model="data.product" readonly />
 					</td>
 				</tr>
 				<template v-if="this.fetchData.length > 15">
 					<tr>
 						<td><input value="일자" readonly size="5" /></td>
 						<td v-for="data in fetchData.slice(15, 30)" :key="data.id">
-							<input type="text" :value="data.productionDate | subStr" />
+							<input
+								type="text"
+								:value="data.productionDate | subStr"
+								readonly
+							/>
 						</td>
 					</tr>
 					<tr>
 						<td><input type="text" value="목표" size="5" readonly /></td>
 						<td v-for="data in fetchData.slice(15, 30)" :key="data.id">
-							<input type="number" v-model="data.target" size="5" />
+							<input type="number" v-model="data.target" size="5" readonly />
 						</td>
 					</tr>
 					<tr>
 						<td><input type="text" value="생산" size="5" readonly /></td>
 						<td v-for="data in fetchData.slice(15, 30)" :key="data.id">
-							<input type="number" v-model="data.product" size="5" />
+							<input type="number" v-model="data.product" size="5" readonly />
 						</td>
 					</tr>
 				</template>
@@ -78,6 +82,7 @@
 			v-if="showModal"
 			@close="showModal = false"
 			@refresh="fetchProductionData"
+			:propsdata="propsdata"
 		></register-modal>
 		<update-modal
 			v-if="updateModal"
@@ -144,7 +149,11 @@ export default {
 			this.showModal = true;
 		},
 		OpenUpdateModal() {
-			this.updateModal = true;
+			if (this.fetchData == '') {
+				alert(`${this.propsdata}월 데이터가 없습니다. 값을 먼저 입력하세요`);
+			} else {
+				this.updateModal = true;
+			}
 		},
 		// 월별 데이터 가져오기
 		async fetchProductionData() {
@@ -175,7 +184,7 @@ export default {
 				if (this.tableView === true) {
 					this.height = 300;
 				} else {
-					this.height = 600;
+					this.height = 550;
 				}
 			},
 		},
