@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const config = {
-	baseUrl: 'http://localhost:8000',
+	baseUrl: 'http://localhost:8001',
 };
 // 해당 월에 데이터 리스트 목록
 function getProductionData(month) {

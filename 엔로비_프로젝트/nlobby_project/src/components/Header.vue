@@ -12,7 +12,7 @@
           <router-link to="/lineChart">선그래프</router-link>
       </li>
       <li>
-          <router-link></router-link>
+          <router-link to="/map">지도 API</router-link>
       </li>
   </ul>
   

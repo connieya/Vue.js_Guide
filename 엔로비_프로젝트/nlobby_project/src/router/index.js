@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home'
 import ChartLine from '../views/Chart_line'
+import MapApifrom from '@/components/MapApi'
 
 
 Vue.use(Router)
@@ -18,7 +18,13 @@ export const router = new Router({
             path: '/lineChart',
             name : 'VueChartKick',
             component : ChartLine
+        },
+         {
+            path: '/map',
+            name : 'mapAPI',
+            component : MapApifrom
         }
+
     ]
 
 })
